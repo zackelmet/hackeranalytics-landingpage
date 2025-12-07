@@ -34,6 +34,7 @@ const components = {
     AutoCompletePosts: dynamic(() => import('./blocks/SearchBlock/AutoCompletePosts')),
     CarouselSection: dynamic(() => import('./sections/CarouselSection')),
     CheckboxFormControl: dynamic(() => import('./blocks/FormBlock/CheckboxFormControl')),
+    CheckoutButton: dynamic(() => import('./blocks/CheckoutButton'), { ssr: false }),
     DividerSection: dynamic(() => import('./sections/DividerSection')),
     EmailFormControl: dynamic(() => import('./blocks/FormBlock/EmailFormControl')),
     FeaturedItem: dynamic(() => import('./sections/FeaturedItemsSection/FeaturedItem')),
@@ -65,6 +66,9 @@ const components = {
     PageLayout: dynamic(() => import('./layouts/PageLayout')),
     PostLayout: dynamic(() => import('./layouts/PostLayout')),
     ToolLayout: dynamic(() => import('./layouts/ToolLayout')),
+    LoginLayout: dynamic(() => import('./layouts/LoginLayout')),
+    SignupLayout: dynamic(() => import('./layouts/SignupLayout')),
+    DashboardLayout: dynamic(() => import('./layouts/DashboardLayout'), { ssr: false }),
     PostFeedLayout: dynamic(() => import('./layouts/PostFeedLayout')),
     PostFeedCategoryLayout: dynamic(() => import('./layouts/PostFeedCategoryLayout'))
 };

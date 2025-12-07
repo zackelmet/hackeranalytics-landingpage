@@ -2,6 +2,7 @@ import * as React from 'react';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import classNames from 'classnames';
+import dynamic from 'next/dynamic';
 
 import { mapStylesToClassNames as mapStyles } from '../../../utils/map-styles-to-class-names';
 import { Link, Action } from '../../atoms';
@@ -9,6 +10,8 @@ import ImageBlock from '../../blocks/ImageBlock';
 import ChevronDownIcon from '../../svgs/chevron-down';
 import CloseIcon from '../../svgs/close';
 import MenuIcon from '../../svgs/menu';
+
+const UserDropdown = dynamic(() => import('../../auth/UserDropdown'), { ssr: false });
 
 export default function Header(props) {
     const { colors = 'bg-light-fg-dark', styles = {}, enableAnnotations } = props;
@@ -21,7 +24,7 @@ export default function Header(props) {
                 'relative',
                 'shadow-header',
                 styles?.self?.margin ? mapStyles({ padding: styles?.self?.margin }) : undefined,
-                styles?.self?.padding ? mapStyles({ padding: styles?.self?.padding }) : 'p-4',
+                styles?.self?.padding ? mapStyles({ padding: styles?.self?.padding }) : 'py-0 px-4',
                 'z-50'
             )}
             {...(enableAnnotations && { 'data-sb-object-id': props?.__metadata?.id })}
@@ -71,6 +74,9 @@ function HeaderLogoLeftPrimaryLeft(props) {
                     <ListOfLinks links={secondaryLinks} enableAnnotations={enableAnnotations} />
                 </ul>
             )}
+            <div className={classNames('hidden lg:block', secondaryLinks.length > 0 ? 'ml-4' : 'ml-auto')}>
+                <UserDropdown />
+            </div>
             {(primaryLinks.length > 0 || secondaryLinks.length > 0) && <MobileMenu {...props} />}
         </div>
     );

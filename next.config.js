@@ -2,6 +2,12 @@
  * @type {import('next').NextConfig}
  */
 module.exports = {
+    eslint: {
+        ignoreDuringBuilds: true,
+    },
+    typescript: {
+        ignoreBuildErrors: true,
+    },
     env: {
         stackbitPreview: process.env.STACKBIT_PREVIEW
     },

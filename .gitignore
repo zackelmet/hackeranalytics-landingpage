@@ -36,9 +36,13 @@ yarn-error.log*
 .env.test.local
 .env.production.local
 .envrc
+netlify-env-vars.txt
+tsconfig.tsbuildinfo
 
 # IDE
 *.code-workspace
 .idea
 
 tmp*
+# Local Netlify folder
+.netlify

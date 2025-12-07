@@ -12,7 +12,9 @@
         "algoliasearch": "^4.24.0",
         "classnames": "^2.5.1",
         "dayjs": "^1.11.11",
+        "dotenv": "^17.2.3",
         "front-matter": "^4.0.2",
+        
         "glob": "^10.4.2",
         "lottie-react": "^2.4.1",
         "markdown-to-jsx": "^7.7.3",
@@ -20,13 +22,14 @@
         "next": "15.4.6",
         "react": "^19.1.0",
         "react-dom": "^19.1.0",
+        "stripe": "^20.0.0",
         "swiper": "^11.1.4",
         "tailwindcss": "^3.4.3",
         "three": "^0.179.1"
     },
     "devDependencies": {
-        "@netlify/plugin-nextjs": "4.40.0",
         "@base2/pretty-print-object": "^1.0.2",
+        "@netlify/plugin-nextjs": "4.40.0",
         "@stackbit/cms-git": "^1.0.32",
         "@stackbit/types": "^2.1.10",
         "@types/glob": "^8.1.0",

@@ -1,6 +1,7 @@
 {
+    "title": "Hacker Analytics",
     "logo": {
-        "url": "/images/Untitled (100 x 100 px).png",
+        "url": "/images/HA-logo.png",
         "altText": "Logo",
         "styles": {
             "self": {
@@ -12,6 +13,25 @@
         "type": "ImageBlock"
     },
     "primaryLinks": [
+        {
+            "type": "SubNav",
+            "label": "Scanners",
+            "altText": "Dropdown",
+            "links": [
+                {
+                    "type": "Link",
+                    "label": "OpenVAS Scanner",
+                    "altText": "OpenVAS Scanner",
+                    "url": "#",
+                    "showIcon": false,
+                    "icon": "arrowRight",
+                    "iconPosition": "right",
+                    "style": "secondary",
+                    "elementId": ""
+                }
+            ],
+            "labelStyle": "secondary"
+        },
         {
             "type": "SubNav",
             "label": "Resources",
@@ -67,17 +87,17 @@
     ],
     "secondaryLinks": [
         {
-            "label": "Contact Us",
-            "altText": "Contact section",
-            "url": "/#contact-section",
+            "label": "Pricing",
+            "altText": "Pricing",
+            "url": "/pricing",
             "icon": "arrowRight",
             "iconPosition": "right",
             "style": "secondary",
             "type": "Button"
         },
         {
-            "label": "Get a CTI Agent",
-            "url": "/request-a-quote",
+            "label": "Login",
+            "url": "/login",
             "icon": "arrowRight",
             "iconPosition": "right",
             "style": "primary",

@@ -7,11 +7,20 @@ import { resolveStaticPaths } from '../utils/static-paths-resolvers';
 import { seoGenerateTitle, seoGenerateMetaTags, seoGenerateMetaDescription } from '../utils/seo-utils';
 
 function Page(props) {
-    const { page, site } = props;
-    const { modelName } = page.__metadata;
-    if (!modelName) {
-        throw new Error(`page has no type, page '${props.path}'`);
+    // Safety check for undefined props
+    if (!props || !props.page || !props.site) {
+        return null;
     }
+    
+    const { page, site } = props;
+    
+    // Safety check for page metadata
+    if (!page.__metadata || !page.__metadata.modelName) {
+        console.error('Page missing metadata:', props.path);
+        return null;
+    }
+    
+    const { modelName } = page.__metadata;
     const PageLayout = getComponent(modelName);
     if (!PageLayout) {
         throw new Error(`no page layout matching the page model: ${modelName}`);
@@ -53,13 +62,26 @@ function Page(props) {
 export function getStaticPaths() {
     const data = allContent();
     const paths = resolveStaticPaths(data);
-    return { paths, fallback: false };
+    // Exclude dashboard from static paths since it requires client-side auth
+    const filteredPaths = paths.filter(path => {
+        const slug = path?.params?.slug;
+        if (!slug) return true; // Keep paths without slug (like homepage)
+        return !slug.includes('dashboard');
+    });
+    return { paths: filteredPaths, fallback: 'blocking' };
 }
 
 export async function getStaticProps({ params }) {
     const data = allContent();
     const urlPath = '/' + (params.slug || []).join('/');
     const props = await resolveStaticProps(urlPath, data);
+    
+    // Safety check - if props are invalid, return notFound
+    if (!props || !props.page || !props.site) {
+        console.error('Invalid props for path:', urlPath);
+        return { notFound: true };
+    }
+    
     return { props };
 }
 

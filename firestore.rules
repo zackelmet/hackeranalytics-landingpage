@@ -1,0 +1,15 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // TEMPORARY: Wide open for debugging
+    match /users/{userId} {
+      allow read, write: if request.auth != null;
+    }
+    
+    // Scans collection for future use
+    match /scans/{scanId} {
+      allow read, write: if request.auth != null;
+    }
+  }
+}
