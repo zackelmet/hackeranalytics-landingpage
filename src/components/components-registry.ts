@@ -10,7 +10,14 @@ import { ComponentType } from 'react';
  */
 
 export function getComponent(key: string): ComponentType {
-    return components[key];
+    const comp = components[key];
+    if (!comp) {
+        // diagnostic: log available component keys when a lookup fails
+        // (this will appear in the server console during dev)
+        // eslint-disable-next-line no-console
+        console.warn('components-registry: component not found for key:', key, 'available keys:', Object.keys(components));
+    }
+    return comp;
 }
 
 /**
