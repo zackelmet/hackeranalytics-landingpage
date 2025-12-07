@@ -73,20 +73,23 @@ export default function OurProcessSection(props) {
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" {...(enableAnnotations && { 'data-sb-field-path': '.plans' })}>
                         {contentPlans && contentPlans.length > 0 ? (
                             contentPlans.map((plan, idx) => (
-                                <div key={idx} className="fade-in bg-white/5 text-slate-200 rounded-xl p-6 shadow-lg transform-gpu hover:-translate-y-1 transition-transform">
+                                <div
+                                    key={idx}
+                                    className="fade-in bg-slate-900/70 text-slate-50 rounded-xl p-6 shadow-lg border border-slate-800 transform-gpu hover:-translate-y-1 hover:shadow-xl hover:border-primary/60 transition-all"
+                                >
                                     <div className="relative h-full flex flex-col">
                                         <div className="absolute -top-5 left-6">
                                             <div className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-primary text-dark font-bold">{idx + 1}</div>
                                         </div>
                                         <div className="flex-1 pt-6">
                                             <div className="flex items-start gap-4">
-                                                <div className="w-12 h-12 rounded-md bg-white/6 flex items-center justify-center text-primary">
+                                                <div className="w-12 h-12 rounded-md bg-white/10 flex items-center justify-center text-primary">
                                                     <img src={icons[idx % icons.length]} alt="icon" className="w-6 h-6" />
                                                 </div>
                                                 <div>
-                                                    <h3 className="text-xl font-semibold leading-tight mb-2 text-slate-100">{plan.title}</h3>
+                                                    <h3 className="text-xl font-semibold leading-tight mb-2 text-white">{plan.title}</h3>
                                                     {plan.description && (
-                                                        <p className="text-sm mb-3 text-slate-300">
+                                                        <p className="text-sm mb-3 text-slate-200">
                                                             {plan.description}
                                                         </p>
                                                     )}
