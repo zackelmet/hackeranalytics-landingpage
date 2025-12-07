@@ -232,7 +232,7 @@ sections:
               - pb-8
               - pr-8
             borderRadius: medium
-            
+
       - type: FeaturedItem
         title: Complete Attack Surface Discovery
         subtitle: Eliminate blind spots. Find forgotten assets and expose poorly maintained endpoints to ensure full network visibility, providing critical, actionable intelligence for both your Red Team testing and Blue Team defense.
@@ -250,7 +250,7 @@ sections:
               - pb-8
               - pr-8
             borderRadius: medium
-            
+
       - type: FeaturedItem
         title: Advanced Vulnerability Management
         subtitle: Gain continuous oversight of your security posture. Easily schedule industry-leading tools like OpenVAS and Nmap for ongoing vulnerability detection and proactive firewall monitoring.
@@ -268,7 +268,7 @@ sections:
               - pb-8
               - pr-8
             borderRadius: medium
-            
+
       - type: FeaturedItem
         title: Intuitive and Simple Interface
         subtitle: Security testing shouldn't be complicated. Our platform features a streamlined interface that allows you to launch powerful vulnerability scans via a simple, configuration-driven form, delivering results quickly and without the hassle.
@@ -335,7 +335,7 @@ sections:
   - type: ContactSection
     elementId: contact-section
     title:
-      text: "Get Started Today"
+      text: 'Get Started Today'
       color: text-dark
       type: TitleBlock
     subtitle: Ready to enhance your security posture? Contact us to learn more.
@@ -407,7 +407,7 @@ sections:
         justifyContent: center
 seo:
   metaTitle: Hosted Vulnerability Scanners - Hacker Analytics
-  metaDescription: "Zero install, maximum impact vulnerability scanning. Hosted Nmap and OpenVAS services for proactive security assessment with no maintenance required."
+  metaDescription: 'Zero install, maximum impact vulnerability scanning. Hosted Nmap and OpenVAS services for proactive security assessment with no maintenance required.'
   socialImage: /images/Hacker Analytics.png
   type: Seo
 type: PageLayout

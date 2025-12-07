@@ -11,15 +11,15 @@ function Page(props) {
     if (!props || !props.page || !props.site) {
         return null;
     }
-    
+
     const { page, site } = props;
-    
+
     // Safety check for page metadata
     if (!page.__metadata || !page.__metadata.modelName) {
         console.error('Page missing metadata:', props.path);
         return null;
     }
-    
+
     const { modelName } = page.__metadata;
     const PageLayout = getComponent(modelName);
     if (!PageLayout) {
@@ -63,7 +63,7 @@ export function getStaticPaths() {
     const data = allContent();
     const paths = resolveStaticPaths(data);
     // Exclude dashboard from static paths since it requires client-side auth
-    const filteredPaths = paths.filter(path => {
+    const filteredPaths = paths.filter((path) => {
         const slug = path?.params?.slug;
         if (!slug) return true; // Keep paths without slug (like homepage)
         return !slug.includes('dashboard');
@@ -74,14 +74,23 @@ export function getStaticPaths() {
 export async function getStaticProps({ params }) {
     const data = allContent();
     const urlPath = '/' + (params.slug || []).join('/');
+    // Fast-path: bail out for internal Next/static or API asset requests so the
+    // page resolver doesn't try to treat those as CMS pages. In dev HMR will
+    // request files under /_next/static/... (hot-update.json) and this catch-
+    // all page would otherwise attempt to resolve them and log "Invalid props"
+    // which breaks Fast Refresh. Return notFound early for those paths.
+    if (urlPath.startsWith('/_next') || urlPath.startsWith('/api') || /\.[a-z0-9]+$/i.test(urlPath)) {
+        return { notFound: true };
+    }
+
     const props = await resolveStaticProps(urlPath, data);
-    
+
     // Safety check - if props are invalid, return notFound
     if (!props || !props.page || !props.site) {
         console.error('Invalid props for path:', urlPath);
         return { notFound: true };
     }
-    
+
     return { props };
 }
 
