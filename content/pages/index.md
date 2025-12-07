@@ -32,6 +32,16 @@ sections:
           - pb-20
           - pr-16
 
+  - type: AsSeenInSection
+    elementId: as-seen-in
+    colors: bg-neutral-fg-dark
+    styles:
+      self:
+        padding:
+          - pt-12
+          - pb-12
+    links: []
+
   - type: FeaturedItemsSection
     title:
       text: Internet facing scanners
