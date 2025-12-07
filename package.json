@@ -14,12 +14,11 @@
         "dayjs": "^1.11.11",
         "dotenv": "^17.2.3",
         "front-matter": "^4.0.2",
-        
         "glob": "^10.4.2",
         "lottie-react": "^2.4.1",
         "markdown-to-jsx": "^7.7.3",
         "marked": "^14.1.2",
-        "next": "15.4.6",
+        "next": "^16.0.7",
         "react": "^19.1.0",
         "react-dom": "^19.1.0",
         "stripe": "^20.0.0",
