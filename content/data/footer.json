@@ -1,10 +1,10 @@
 {
     "logo": {
-        "url": "/images/Untitled (150 x 150 px).png",
-        "altText": "Logo light",
+        "url": "/images/HA-logo.png",
+        "altText": "Hacker Analytics logo",
         "type": "ImageBlock"
     },
-    "text": "Stay compliant. Stay protected.",
+    "text": "Hosted security scanners",
     "primaryLinks": {
         "title": "Blogs",
         "links": [
@@ -75,18 +75,18 @@
             "type": "Social"
         }
     ],
-    "legalLinks": [
-        {
-            "label": "Built by Zack El Metennani",
-            "url": "https://zackelmet.github.io/",
-            "icon": "arrowRight",
-            "iconPosition": "right",
-            "style": "secondary",
-            "type": "Link",
-            "altText": "Author"
-        }
-    ],
+    "legalLinks": [],
     "copyrightText": "© 2025 Hacker Analytics. All rights reserved.\n",
     "colors": "bg-dark-fg-light",
+    "styles": {
+        "self": {
+            "padding": [
+                "pt-10",
+                "pb-12",
+                "pl-4",
+                "pr-4"
+            ]
+        }
+    },
     "type": "Footer"
 }

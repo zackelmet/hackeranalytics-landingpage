@@ -16,13 +16,17 @@ export default function Badge(props) {
                 'sb-component',
                 'sb-component-block',
                 'sb-component-badge',
+                'badge-glow',
+                'inline-flex',
+                'items-center',
                 color,
                 className,
                 styles?.self ? mapStyles(styles?.self) : undefined
             )}
             data-sb-field-path={fieldPath}
         >
-            <span className="tracking-wider uppercase" {...(fieldPath && { 'data-sb-field-path': '.label' })}>
+            <span className="badge-dot" aria-hidden />
+            <span className="badge-label" {...(fieldPath && { 'data-sb-field-path': '.label' })}>
                 {label}
             </span>
         </div>

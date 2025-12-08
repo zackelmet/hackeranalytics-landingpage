@@ -46,6 +46,7 @@ import { VideoBlock } from './VideoBlock';
 import { MetaTag } from './MetaTag';
 import { FooterLinksGroup } from './FooterLinksGroup';
 import { Seo } from './Seo';
+import { SpinningSphereBlock } from './SpinningSphereBlock';
 
 export const allModels = {
     BackgroundImage,
@@ -91,6 +92,7 @@ export const allModels = {
     ThemeStyleLink,
     TitleBlock,
     VideoBlock,
+    SpinningSphereBlock,
     MetaTag,
     FooterLinksGroup,
     Seo,

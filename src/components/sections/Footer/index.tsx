@@ -92,6 +92,7 @@ export default function Footer(props) {
                                 {copyrightText}
                             </Markdown>
                         )}
+                        <div className="footer-badge">Powered by open source</div>
                     </div>
                 )}
             </div>
