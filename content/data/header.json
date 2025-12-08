@@ -20,9 +20,50 @@
             "links": [
                 {
                     "type": "Link",
-                    "label": "OpenVAS Scanner",
-                    "altText": "OpenVAS Scanner",
-                    "url": "#",
+                    "label": "OpenVAS",
+                    "altText": "OpenVAS",
+                    "url": "https://app.hackeranalytics.com/login?tool=openvas",
+                    "showIcon": false,
+                    "icon": "arrowRight",
+                    "iconPosition": "right",
+                    "style": "secondary",
+                    "elementId": ""
+                },
+                {
+                    "type": "Link",
+                    "label": "Nmap",
+                    "altText": "Nmap",
+                    "url": "https://app.hackeranalytics.com/login?tool=nmap",
+                    "showIcon": false,
+                    "icon": "arrowRight",
+                    "iconPosition": "right",
+                    "style": "secondary",
+                    "elementId": ""
+                },
+                {
+                    "type": "Link",
+                    "label": "Nikto",
+                    "altText": "Nikto",
+                    "url": "https://app.hackeranalytics.com/login?tool=nikto",
+                    "showIcon": false,
+                    "icon": "arrowRight",
+                    "iconPosition": "right",
+                    "style": "secondary",
+                    "elementId": ""
+                }
+            ],
+            "labelStyle": "secondary"
+        },
+        {
+            "type": "SubNav",
+            "label": "Services",
+            "altText": "Dropdown",
+            "links": [
+                {
+                    "type": "Link",
+                    "label": "Cyber Threat Intelligence",
+                    "altText": "Cyber Threat Intelligence",
+                    "url": "/cyber-threat-intelligence",
                     "showIcon": false,
                     "icon": "arrowRight",
                     "iconPosition": "right",
@@ -72,24 +113,13 @@
                 }
             ],
             "labelStyle": "secondary"
-        },
-        {
-            "type": "Link",
-            "label": "Cyber Threat Intel",
-            "altText": "",
-            "url": "/cyber-threat-intelligence",
-            "showIcon": false,
-            "icon": "arrowRight",
-            "iconPosition": "right",
-            "style": "secondary",
-            "elementId": ""
         }
     ],
     "secondaryLinks": [
         {
             "label": "Pricing",
             "altText": "Pricing",
-            "url": "/pricing",
+            "url": "https://app.hackeranalytics.com/#pricing",
             "icon": "arrowRight",
             "iconPosition": "right",
             "style": "secondary",
@@ -97,7 +127,7 @@
         },
         {
             "label": "Login",
-            "url": "/login",
+            "url": "https://app.hackeranalytics.com/login",
             "icon": "arrowRight",
             "iconPosition": "right",
             "style": "primary",
