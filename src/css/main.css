@@ -132,6 +132,85 @@
     box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.05), 0 10px 25px rgba(0, 0, 0, 0.45), 0 0 18px rgba(0, 254, 217, 0.18);
 }
 
+.accordion-card {
+    position: relative;
+    background: #0a0a23;
+    border: 1px solid rgba(0, 254, 217, 0.18);
+    border-radius: 1rem;
+    padding: 1.1rem 1.2rem;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.03), 0 18px 45px rgba(0, 0, 0, 0.45);
+    overflow: hidden;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.accordion-card::before {
+    content: '';
+    position: absolute;
+    inset: -45% auto auto -45%;
+    width: 90%;
+    height: 90%;
+    background: radial-gradient(circle at 30% 30%, rgba(0, 254, 217, 0.18), transparent 45%);
+    filter: blur(26px);
+    opacity: 0.25;
+    transform: rotate(6deg);
+    pointer-events: none;
+}
+
+.accordion-card.is-open {
+    transform: translateY(-4px);
+    border-color: rgba(0, 254, 217, 0.32);
+    box-shadow: 0 0 0 1px rgba(0, 254, 217, 0.28), 0 22px 60px rgba(0, 0, 0, 0.55), 0 0 26px rgba(0, 254, 217, 0.2);
+}
+
+.accordion-icon {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 9999px;
+    border: 1px solid rgba(0, 254, 217, 0.35);
+    background: radial-gradient(circle, rgba(0, 254, 217, 0.25), rgba(0, 140, 255, 0.12));
+    box-shadow: 0 0 0 6px rgba(0, 254, 217, 0.08), 0 0 18px rgba(0, 254, 217, 0.32);
+    position: relative;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.accordion-icon::before,
+.accordion-icon::after {
+    content: '';
+    position: absolute;
+    background: #e8f6ff;
+    border-radius: 9999px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.accordion-icon::before {
+    width: 12px;
+    height: 2px;
+}
+
+.accordion-icon::after {
+    width: 2px;
+    height: 12px;
+}
+
+.accordion-icon.rotate-45::after {
+    transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.accordion-answer {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease, opacity 0.35s ease, padding-top 0.35s ease;
+}
+
+.accordion-answer.is-open {
+    max-height: 500px;
+    opacity: 1;
+    padding-top: 0.75rem;
+}
+
 @keyframes badge-pulse {
     0% {
         transform: translate3d(0, 0, 0) scale(1);

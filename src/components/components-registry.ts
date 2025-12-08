@@ -53,6 +53,7 @@ const components = {
     GenericSection: dynamic(() => import('./sections/GenericSection')),
     BasicSection: dynamic(() => import('./sections/BasicSection')),
     ContactSection: dynamic(() => import('./sections/ContactSection')),
+    AccordionSection: dynamic(() => import('./sections/AccordionSection')),
     RequestAQuoteSection: dynamic(() => import('./sections/RequestAQuoteSection')),
     FoxAnimation: dynamic(() => import('./foxanimation')),
     SpinningSphereBlock: dynamic(() => import('./blocks/SpinningSphereBlock'), { ssr: false }),

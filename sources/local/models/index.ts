@@ -47,6 +47,7 @@ import { MetaTag } from './MetaTag';
 import { FooterLinksGroup } from './FooterLinksGroup';
 import { Seo } from './Seo';
 import { SpinningSphereBlock } from './SpinningSphereBlock';
+import { AccordionSection } from './AccordionSection';
 
 export const allModels = {
     BackgroundImage,
@@ -93,6 +94,7 @@ export const allModels = {
     TitleBlock,
     VideoBlock,
     SpinningSphereBlock,
+    AccordionSection,
     MetaTag,
     FooterLinksGroup,
     Seo,

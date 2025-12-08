@@ -150,6 +150,45 @@ sections:
       subtitle:
         textAlign: center
 
+  - type: AccordionSection
+    title:
+      text: FAQs
+      color: text-dark
+      type: TitleBlock
+    subtitle: Questions Teams Often Ask
+    items:
+      - question: How often are your vulnerability databases updated?
+        answer: >-
+          Our threat intelligence is updated continuously—multiple times per day—not weekly or monthly. This means you are always scanning against the absolute latest CVEs and zero-day threat intelligence, eliminating the risk of operating with an outdated vulnerability definition file.
+      - question: What kind of integrations do you offer with existing security tools?
+        answer: >-
+          We offer seamless integration with your existing workflow. This includes native hooks for CI/CD pipelines (like GitHub Actions and Jenkins), ticketing systems (Jira, ServiceNow), and communication tools (Slack) to automatically turn findings into trackable, prioritized remediation tickets.
+      - question: Will using a hosted scanner slow down or impact my targets?
+        answer: >-
+          Our scanners are engineered to be efficient and respectful of your network's capacity. You have granular control over scan intensity and scheduling, ensuring you can run comprehensive security checks without causing performance degradation to live production assets.
+      - question: Do I have to sign a long-term contract?
+        answer: >-
+          No. All of our paid plans are offered on a flexible month-to-month subscription basis, allowing you to scale your usage up or down as your needs change. You can cancel at any time, and we stand by our 30-day money-back guarantee.
+      - question: How quickly can I get my first scan results?
+        answer: >-
+          Because our platform is hosted and requires zero local installation, you can configure your target and launch your first basic scan immediately after sign-up. Depending on the complexity of the target, you will typically see preliminary, actionable results within 5 to 30 minutes.
+      - question: Where is my scanning data and report information stored?
+        answer: >-
+          All scan data is stored securely in encrypted cloud storage (using AES-256 encryption) within our certified data centers. We maintain strict geographical compliance and provide robust access controls to ensure only authorized users on your team can view the reports.
+      - question: If I cancel my subscription, what happens to my historical scan reports?
+        answer: >-
+          We allow you to retain access to your historical scan reports and data for 90 days after canceling your subscription, giving you ample time to export your records and maintain compliance archives. After 30 days, the data is securely and permanently deleted from our servers.
+    elementId: faq-section
+    colors: bg-neutral-fg-dark
+    styles:
+      self:
+        padding:
+          - pt-16
+          - pl-4
+          - pb-16
+          - pr-4
+        justifyContent: center
+
 seo:
   metaTitle: Hosted Vulnerability Scanners - Hacker Analytics
   metaDescription: 'Zero install, maximum impact vulnerability scanning. Hosted Nmap and OpenVAS services for proactive security assessment with no maintenance required.'
