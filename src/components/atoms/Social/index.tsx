@@ -25,13 +25,16 @@ export default function Social(props) {
                 'duration-200',
                 'ease-in',
                 'hover:-translate-y-1',
+                'p-2',
                 className
             )}
             href={url}
             aria-label={altText}
+            target={props.target}
+            rel={props.rel}
             {...annotations}
         >
-            {IconComponent && <IconComponent className="shrink-0 fill-current w-[1em] h-[1em]" {...(fieldPath && { 'data-sb-field-path': '.icon' })} />}
+            {IconComponent && <IconComponent className="shrink-0 fill-current w-5 h-5" {...(fieldPath && { 'data-sb-field-path': '.icon' })} />}
         </Link>
     );
 }
