@@ -23,7 +23,7 @@ export default function SpinningSphereBlock(props: SpinningSphereBlockProps) {
 
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
-        camera.position.z = 4.0;
+        camera.position.z = 4.5;
 
         const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
         renderer.setSize(width, height);
@@ -43,7 +43,7 @@ export default function SpinningSphereBlock(props: SpinningSphereBlockProps) {
         const globe = new THREE.Group();
         scene.add(globe);
 
-        const globeRadius = 1.05;
+        const globeRadius = 1.35;
 
         // Core wireframe using edges for crisp lines
         const baseGeo = new THREE.IcosahedronGeometry(globeRadius, 4);
@@ -94,7 +94,7 @@ export default function SpinningSphereBlock(props: SpinningSphereBlockProps) {
         // Orbiting pings
         type Orbiter = { mesh: THREE.Mesh; radius: number; speed: number; inc: number; phase: number };
         const orbiters: Orbiter[] = [];
-        const orbiterGeo = new THREE.SphereGeometry(0.035, 12, 12);
+        const orbiterGeo = new THREE.SphereGeometry(0.04, 16, 16);
         for (let i = 0; i < 14; i++) {
             const mat = new THREE.MeshBasicMaterial({ color: 0x8fffdc, transparent: true, opacity: 0.9, blending: THREE.AdditiveBlending });
             const mesh = new THREE.Mesh(orbiterGeo, mat);
@@ -111,13 +111,13 @@ export default function SpinningSphereBlock(props: SpinningSphereBlockProps) {
         // Traveling pulses
         type Pulse = { mesh: THREE.Mesh; start: THREE.Vector3; end: THREE.Vector3; axis: THREE.Vector3; angle: number; progress: number; speed: number };
         const pulses: Pulse[] = [];
-        const pulseGeo = new THREE.SphereGeometry(0.04, 10, 10);
+        const pulseGeo = new THREE.SphereGeometry(0.05, 12, 12);
         const pulseMat = new THREE.MeshBasicMaterial({ color: 0xffffff, emissive: 0x00fed9, transparent: true, opacity: 0.95, blending: THREE.AdditiveBlending });
 
         // Ripple rings on pulse impact
         type Ripple = { mesh: THREE.Mesh; life: number; maxLife: number };
         const ripples: Ripple[] = [];
-        const ringGeo = new THREE.RingGeometry(0.06, 0.09, 48);
+        const ringGeo = new THREE.RingGeometry(0.08, 0.12, 48);
         const ringMat = new THREE.MeshBasicMaterial({ color: 0x00fed9, side: THREE.DoubleSide, transparent: true, opacity: 0.4, blending: THREE.AdditiveBlending });
 
         const spawnPulse = () => {
@@ -249,5 +249,5 @@ export default function SpinningSphereBlock(props: SpinningSphereBlockProps) {
         };
     }, []);
 
-    return <div id={elementId} ref={containerRef} className={classNames('w-full', 'aspect-square', 'max-w-[260px]', 'mx-auto', className)} />;
+    return <div id={elementId} ref={containerRef} className={classNames('w-full', 'aspect-square', 'max-w-xl', 'mx-auto', className)} />;
 }

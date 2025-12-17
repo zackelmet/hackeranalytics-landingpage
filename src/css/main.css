@@ -269,12 +269,15 @@
 }
 /* Fallback to Google fonts while local font loads */
 
-/* FORCE: apply the site's "light" text color everywhere (overrides component utilities) */
-/* Use with caution — this will make all text the same light-blue color */
-html,
-body,
-body * {
-    color: #00fed9 !important;
+/* Root variables (clean, centralized) */
+:root {
+    --bg: #1c1c33; /* requested page background (dark navy) */
+    --panel: #0f162b;
+    --border: #1e2a3f;
+    --text: #e8f6ff;
+    --text-muted: #c9d6e3;
+    --primary: #00fed9;
+    --shadow-glow: 0 0 35px rgba(0,254,217,.18);
 }
 
 /* If you add a bold file for ShareTechMono, add another @font-face here with font-weight:700 */
@@ -285,9 +288,16 @@ body * {
 
 @layer base {
     body {
-        @apply text-base font-sans text-light;
-        background-color: #0a0a23;
-        /* almost black, dark blue */
+        @apply text-base font-sans;
+        /* layered background: faint grid on top of the dark base */
+        background-color: var(--bg);
+        background-image: linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 0),
+                          linear-gradient(0deg, rgba(255,255,255,0.02) 1px, transparent 0);
+        background-size: 40px 40px;
+        background-repeat: repeat;
+        background-position: 0 0, 0 0;
+        color: var(--primary); /* site text uses cyan accent as requested */
+        min-height: 100vh;
     }
 
     h1,
@@ -635,26 +645,7 @@ body * {
     }
 }
 
-/* App background / neon grid — matched from app.hackeranalytics.com */
-:root {
-    --bg: #0a0a23;
-    --panel: #0f162b;
-    --border: #1e2a3f;
-    --text: #e8f6ff;
-    --text-muted: #c9d6e3;
-    --primary: #00fed9;
-    --shadow-glow: 0 0 35px rgba(0,254,217,.18);
-}
-
-body {
-    /* subtle radial highlights over the deep navy base */
-    background: radial-gradient(circle at 20% 20%, rgba(0,140,255,.08), transparent 25%),
-                radial-gradient(circle at 80% 10%, rgba(0,254,217,.07), transparent 23%),
-                radial-gradient(circle at 50% 80%, rgba(0,140,255,.05), transparent 28%),
-                var(--bg);
-    color: var(--text);
-    min-height: 100vh;
-}
+/* Decorative grid used in some sections (kept below) */
 
 /* decorative grid used on the app hero and sections */
 .neon-grid {
@@ -896,4 +887,105 @@ html, body, #__next, main, .sb-layout {
 #quote-form .sb-textarea,
 #quote-form .sb-select {
     color: #00fed9 !important;
+}
+
+/* Force common text utility classes to use the site cyan accent
+   This overrides component-level utility classes (e.g. text-primary, text-dark,
+   and common blue/gray utilities) so the page text matches the requested
+   `--primary` color. Scoped broadly because the user requested site-wide cyan.
+*/
+.text-primary,
+.text-dark,
+.text-gray-800,
+.text-gray-900,
+.text-blue-800,
+.text-blue-900,
+.text-current,
+.text-inherit {
+    color: var(--primary) !important;
+}
+
+/* Pain points section: distinct card style (skewed, layered neon panels) */
+.pain-points-section .section-header {
+    text-align: left;
+}
+
+.pain-points-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.25rem;
+}
+
+.pain-point-card {
+    position: relative;
+    padding: 2rem 1.5rem;
+    border-radius: 14px;
+    overflow: visible;
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.06));
+    border: 1px solid rgba(0,254,217,0.08);
+    box-shadow: 0 18px 40px rgba(0,0,0,0.55), 0 0 28px rgba(0,254,217,0.04);
+    transform: perspective(800px) rotateX(2deg) translateY(0);
+    transition: transform 300ms cubic-bezier(.2,.9,.2,1), box-shadow 300ms ease;
+    color: var(--text);
+}
+
+.pain-point-card:hover {
+    transform: perspective(800px) rotateX(0deg) translateY(-8px);
+    box-shadow: 0 26px 60px rgba(0,0,0,0.6), var(--shadow-glow);
+}
+
+.pain-point-card .pain-point-deco {
+    position: absolute;
+    inset: -18% -6% auto -6%;
+    height: 55%;
+    background: linear-gradient(120deg, rgba(0,254,217,0.06), rgba(0,140,255,0.03));
+    filter: blur(24px);
+    border-radius: 18px;
+    z-index: 0;
+    transform: skewY(-6deg);
+}
+
+.pain-point-card .pain-point-icon {
+    position: relative;
+    z-index: 2;
+    width: 64px;
+    height: 64px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    background: linear-gradient(180deg, rgba(0,254,217,0.12), rgba(0,140,255,0.06));
+    border: 1px solid rgba(0,254,217,0.18);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.6);
+    margin-bottom: 1rem;
+}
+
+.pain-point-title {
+    position: relative;
+    z-index: 2;
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+}
+
+.pain-point-text {
+    position: relative;
+    z-index: 2;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+@media (max-width: 900px) {
+    .pain-points-grid { grid-template-columns: 1fr; }
+}
+
+/* make the section subtitle explicitly white as requested */
+.pain-points-section .section-header .subtitle {
+    color: #ffffff;
+}
+
+/* Force the ValueGridSection subtitle to be white (overrides text-slate-600) */
+.sb-component-value-grid .subtitle {
+    color: #ffffff !important;
 }

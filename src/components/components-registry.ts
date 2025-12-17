@@ -65,6 +65,7 @@ const components = {
     'malware-reportSection': dynamic(() => import('./sections/PricingSection')),
     OurProcessSection: dynamic(() => import('./sections/OurProcessSection')),
     ValueGridSection: dynamic(() => import('./sections/ValueGridSection')),
+    PainPointsSection: dynamic(() => import('./sections/PainPointsSection')),
     AsSeenInSection: dynamic(() => import('./sections/AsSeenInSection')),
     PostFeedSection: dynamic(() => import('./sections/PostFeedSection')),
     ToolsHeroSection: dynamic(() => import('./sections/ToolsHeroSection')),

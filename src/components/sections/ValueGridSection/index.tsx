@@ -77,7 +77,7 @@ export default function ValueGridSection(props: ValueGridSectionProps) {
                 )}
                 {subtitle && (
                     <p
-                        className={classNames('w-full', 'max-w-3xl', 'mx-auto', 'text-lg', 'sm:text-xl', 'text-center', 'text-slate-600', 'mb-6')}
+                        className={classNames('w-full', 'max-w-3xl', 'mx-auto', 'text-lg', 'sm:text-xl', 'text-center', 'text-slate-600', 'mb-6', 'subtitle')}
                         {...(enableAnnotations && { 'data-sb-field-path': '.subtitle' })}
                     >
                         {subtitle}

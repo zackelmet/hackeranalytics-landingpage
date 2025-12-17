@@ -96,50 +96,25 @@ sections:
       subtitle:
         textAlign: center
 
-  - type: GenericSection
+  - type: PainPointsSection
     title:
       text: Stop fighting self-hosted scanners
       color: text-dark
       type: TitleBlock
     subtitle: Stop relying on clunky, self-hosted security software that demands dedicated servers, endless patching, and constant manual upkeep.
-    text: |-
-      <div class="grid gap-6 lg:grid-cols-3">
-        <div class="value-card p-6">
-          <div class="flex items-center gap-3">
-            <div class="badge-glow">
-              <span class="badge-dot"></span>
-              <span class="badge-label">High Hidden Costs</span>
-            </div>
-            <img src="/images/icons/section/server.png" alt="costs" class="h-8 w-auto"/>
-          </div>
-          <h3 class="value-title mt-4">Licenses, power & a full-time babysitter</h3>
-          <p class="mt-3 neon-subtle">Licenses, servers, power, cooling and the engineer stuck babysitting scanner uptime—all rack up invisible, recurring costs.</p>
-        </div>
-
-        <div class="value-card p-6">
-          <div class="flex items-center gap-3">
-            <div class="badge-glow">
-              <span class="badge-dot"></span>
-              <span class="badge-label">Outdated Threat Coverage</span>
-            </div>
-            <img src="/images/icons/section/globe.png" alt="coverage" class="h-8 w-auto"/>
-          </div>
-          <h3 class="value-title mt-4">Zero-days slip through the cracks</h3>
-          <p class="mt-3 neon-subtle">Missed patches mean missed detections. If feeds fall behind, your scanner becomes a blindfold rather than an alarm.</p>
-        </div>
-
-        <div class="value-card p-6">
-          <div class="flex items-center gap-3">
-            <div class="badge-glow">
-              <span class="badge-dot"></span>
-              <span class="badge-label">Wasted Time & Focus</span>
-            </div>
-            <img src="/images/icons/section/wrench.png" alt="time" class="h-8 w-auto"/>
-          </div>
-          <h3 class="value-title mt-4">Engineers fixing infra, not bugs</h3>
-          <p class="mt-3 neon-subtle">Security teams spend cycles wrestling infrastructure instead of triaging and fixing the vulnerabilities that actually matter.</p>
-        </div>
-      </div>
+    items:
+      - title: High Hidden Costs
+        icon: /images/icons/section/icons8-parcel-cost-80.png
+        iconAlt: Server icon
+        text: Licenses, servers, power, cooling and the engineer stuck babysitting scanner uptime — all add invisible, recurring costs.
+      - title: Outdated Threat Coverage
+        icon: /images/icons/section/icons8-hacking-100.png
+        iconAlt: Coverage icon
+        text: Missed patches and stale feeds mean critical vulnerabilities go undetected until it's too late.
+      - title: Wasted Time & Focus
+        icon: /images/icons/section/icons8-time-100.png
+        iconAlt: Wrench icon
+        text: Security teams get pulled into infrastructure firefights instead of triaging and fixing real vulnerabilities.
     elementId: problem-agitation
     colors: bg-neutral-fg-dark
     styles:
@@ -149,9 +124,9 @@ sections:
           - pl-8
           - pb-16
           - pr-8
-        textAlign: left
         justifyContent: center
-        textCard: true
+      subtitle:
+        textAlign: left
 
   - type: ValueGridSection
     title:
