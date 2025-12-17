@@ -635,6 +635,52 @@ body * {
     }
 }
 
+/* App background / neon grid — matched from app.hackeranalytics.com */
+:root {
+    --bg: #0a0a23;
+    --panel: #0f162b;
+    --border: #1e2a3f;
+    --text: #e8f6ff;
+    --text-muted: #c9d6e3;
+    --primary: #00fed9;
+    --shadow-glow: 0 0 35px rgba(0,254,217,.18);
+}
+
+body {
+    /* subtle radial highlights over the deep navy base */
+    background: radial-gradient(circle at 20% 20%, rgba(0,140,255,.08), transparent 25%),
+                radial-gradient(circle at 80% 10%, rgba(0,254,217,.07), transparent 23%),
+                radial-gradient(circle at 50% 80%, rgba(0,140,255,.05), transparent 28%),
+                var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+}
+
+/* decorative grid used on the app hero and sections */
+.neon-grid {
+    background: linear-gradient(90deg, hsla(0,0%,100%,.03) 1px, transparent 0),
+                linear-gradient(0deg, hsla(0,0%,100%,.03) 1px, transparent 0);
+    background-size: 32px 32px;
+    border-radius: 18px;
+    border: 1px solid rgba(255,255,255,0.04);
+}
+
+/* Ensure the app background is applied to the whole page/root containers */
+html, body, #__next, main, .sb-layout {
+    background: radial-gradient(circle at 20% 20%, rgba(0,140,255,.08), transparent 25%),
+                radial-gradient(circle at 80% 10%, rgba(0,254,217,.07), transparent 23%),
+                radial-gradient(circle at 50% 80%, rgba(0,140,255,.05), transparent 28%),
+                var(--bg) !important;
+}
+
+/* Force section surfaces to be semi-transparent when using neutral background tokens so the page background shows through */
+.sb-component-basic-section .bg-white\/5,
+.sb-component-basic-section .bg-dark-fg-light,
+.sb-component-basic-section [class*="bg-neutral-fg-dark"] {
+    background-color: rgba(255,255,255,0.05) !important;
+}
+
+
 /* Ensure the main layout background is transparent for animated particles */
 .sb-page,
 .sb-base,

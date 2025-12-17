@@ -77,7 +77,7 @@ export default function BasicSection(props) {
                         <div className={classNames(textWrapperDecoration)}>
                             {/* removed small 'Compliance' badge per design request */}
                             {badge && <Badge {...badge} {...(enableAnnotations && { 'data-sb-field-path': '.badge' })} />}
-                            {title && (
+                                        'lg:w-[70%]': hasSeparateMedia && hasXDirection,
                                 <TitleBlock
                                     {...title}
                                     className={classNames('mb-4', { 'mt-4': badge?.label })}
@@ -235,7 +235,7 @@ export default function BasicSection(props) {
                     <div
                         className={classNames('w-full', 'flex', mapStyles({ justifyContent: styles?.self?.justifyContent ?? 'flex-start' }), {
                             'max-w-sectionBody': media.__metadata?.modelName === 'FormBlock',
-                            'lg:w-1/2 lg:shrink-0': hasTextContent && hasXDirection,
+                                    'lg:w-[30%] lg:shrink-0': hasTextContent && hasXDirection,
                             'lg:mt-10': badge?.label && media.__metadata?.modelName === 'FormBlock' && hasXDirection
                         })}
                     >
