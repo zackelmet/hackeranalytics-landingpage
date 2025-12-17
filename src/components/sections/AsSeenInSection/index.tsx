@@ -9,10 +9,10 @@ export default function AsSeenInSection(props) {
 
     // default entries (useable placeholders); user will provide real URLs later
     const entries = links && links.length > 0 ? links : [
-        { name: 'Hacker News', href: '#', img: '/images/logos/hackernews.svg' },
-        { name: 'Product Hunt', href: '#', img: '/images/logos/producthunt.svg' },
-        { name: 'X', href: '#', img: '/images/logos/x.svg' },
-        { name: 'G2', href: '#', img: '/images/logos/g2.svg' }
+        { name: 'Hacker News', href: '#', img: '/images/logos/y-combinator-news.png' },
+        { name: 'Product Hunt', href: '#', img: '/images/logos/producthunt.png' },
+        { name: 'X', href: '#', img: '/images/logos/x-twitter.png' },
+        { name: 'G2', href: '#', img: '/images/logos/g2.png' }
     ];
 
     return (
