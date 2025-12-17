@@ -1086,6 +1086,28 @@ html, body, #__next, main, .sb-layout {
 }
 
 /* Make the hero CTA more pronounced */
+
+/* Increase header nav text size (exclude the site title/logo) */
+.sb-component-header ul li > .sb-component-link,
+.sb-component-header ul li > a,
+.sb-component-header ul li > button,
+.sb-component-header ul li > .sb-component-button {
+    font-size: 1.125rem !important;
+    line-height: 1.2 !important;
+}
+
+/* Increase all footer text size for readability */
+.sb-component-footer,
+.sb-component-footer .sb-markdown,
+.sb-component-footer p,
+.sb-component-footer a,
+.sb-component-footer li,
+.sb-component-footer .sb-footer-bottom,
+.sb-component-footer .sb-footer-bottom p {
+    font-size: 1.125rem !important;
+    line-height: 1.4 !important;
+}
+
 .sb-component-generic-section .sb-component-button-primary {
     display: inline-flex;
     align-items: center;

@@ -6,13 +6,13 @@
     },
     "text": "Hosted security scanners",
     "primaryLinks": {
-        "title": "Blogs",
+        "title": "Scanners",
         "links": [
             {
                 "type": "Link",
-                "label": "Malware Report",
-                "altText": "Malware Report",
-                "url": "/malware-report",
+                "label": "OpenVAS",
+                "altText": "OpenVAS",
+                "url": "/openvas",
                 "showIcon": false,
                 "icon": "arrowRight",
                 "iconPosition": "right",
@@ -21,9 +21,20 @@
             },
             {
                 "type": "Link",
-                "label": "Red Team Tools",
-                "altText": "Red Team Tools",
-                "url": "/redteam-tools",
+                "label": "Nmap",
+                "altText": "Nmap",
+                "url": "/nmap",
+                "showIcon": false,
+                "icon": "arrowRight",
+                "iconPosition": "right",
+                "style": "secondary",
+                "elementId": ""
+            },
+            {
+                "type": "Link",
+                "label": "Nikto",
+                "altText": "Nikto",
+                "url": "/nikto",
                 "showIcon": false,
                 "icon": "arrowRight",
                 "iconPosition": "right",
@@ -34,13 +45,13 @@
         "type": "FooterLinksGroup"
     },
     "secondaryLinks": {
-        "title": "Pages",
+        "title": "Resources",
         "links": [
             {
                 "type": "Link",
-                "label": "Cyber Threat Intel",
-                "altText": "",
-                "url": "/cyber-threat-intelligence",
+                "label": "Red Team Tools",
+                "altText": "Red Team Tools",
+                "url": "/redteam-tools",
                 "showIcon": false,
                 "icon": "arrowRight",
                 "iconPosition": "right",
@@ -49,9 +60,9 @@
             },
             {
                 "type": "Link",
-                "label": "Contact Us",
-                "altText": "",
-                "url": "/contact-us",
+                "label": "Blog",
+                "altText": "Blog",
+                "url": "/blog",
                 "showIcon": false,
                 "icon": "arrowRight",
                 "iconPosition": "right",

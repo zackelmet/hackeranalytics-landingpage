@@ -25,7 +25,7 @@ export default function Social(props) {
                 'duration-200',
                 'ease-in',
                 'hover:-translate-y-1',
-                'p-2',
+                'p-3',
                 className
             )}
             href={url}
@@ -34,7 +34,7 @@ export default function Social(props) {
             rel={props.rel}
             {...annotations}
         >
-            {IconComponent && <IconComponent className="shrink-0 fill-current w-5 h-5" {...(fieldPath && { 'data-sb-field-path': '.icon' })} />}
+            {IconComponent && <IconComponent className="shrink-0 fill-current w-8 h-8" {...(fieldPath && { 'data-sb-field-path': '.icon' })} />}
         </Link>
     );
 }
