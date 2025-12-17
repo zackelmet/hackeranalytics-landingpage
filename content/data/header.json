@@ -56,39 +56,9 @@
         },
         {
             "type": "SubNav",
-            "label": "Services",
-            "altText": "Dropdown",
-            "links": [
-                {
-                    "type": "Link",
-                    "label": "Cyber Threat Intelligence",
-                    "altText": "Cyber Threat Intelligence",
-                    "url": "/cyber-threat-intelligence",
-                    "showIcon": false,
-                    "icon": "arrowRight",
-                    "iconPosition": "right",
-                    "style": "secondary",
-                    "elementId": ""
-                }
-            ],
-            "labelStyle": "secondary"
-        },
-        {
-            "type": "SubNav",
             "label": "Resources",
             "altText": "Dropdown",
             "links": [
-                {
-                    "type": "Link",
-                    "label": "Malware Report",
-                    "altText": "Malware Report",
-                    "url": "/malware-report",
-                    "showIcon": false,
-                    "icon": "arrowRight",
-                    "iconPosition": "right",
-                    "style": "secondary",
-                    "elementId": ""
-                },
                 {
                     "type": "Link",
                     "label": "Red Team Tools",
