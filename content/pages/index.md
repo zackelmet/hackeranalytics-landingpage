@@ -44,14 +44,25 @@ sections:
         padding:
           - pt-12
           - pb-12
-    links: []
+    links:
+      - name: Hacker News
+        href: https://news.ycombinator.com
+        img: /images/logos/y-combinator-news.png
+      - name: Product Hunt
+        href: https://www.producthunt.com
+        img: /images/logos/producthunt.png
+      - name: X
+        href: https://x.com/vuln_scanners
+        img: /images/logos/x-twitter.png
+      - name: G2
+        href: https://www.g2.com/products/hosted-security-scanners/reviews
+        img: /images/logos/g2.png
 
   - type: ValueGridSection
     title:
       text: Internet facing scanners
       color: text-dark
       type: TitleBlock
-    subtitle: Instant Deployment & Zero Setup
     items:
       - title: Instant Deployment & Zero Setup
         subtitle: Start scanning immediately
@@ -69,10 +80,10 @@ sections:
         iconAlt: Meter icon
         description: Easily scale your scanning capacity up or down to cover one asset or a thousand, without managing physical resources.
       - title: Scan From Anywhere
-        subtitle: External & internal scanning
+        subtitle: External scanning
         icon: /images/icons/section/globe.png
         iconAlt: Globe icon
-        description: Perform external and internal network scans against public-facing assets, no matter your physical location.
+        description: Perform external network scans against public-facing assets, no matter your physical location.
       - title: Always Up-to-Date
         subtitle: Continuous vulnerability updates
         icon: /images/icons/section/fighterjet.png
@@ -162,29 +173,23 @@ sections:
       text: FAQs
       color: text-dark
       type: TitleBlock
-    subtitle: Questions Teams Often Ask
+    subtitle: Teams Often Ask
     items:
       - question: How often are your vulnerability databases updated?
         answer: >-
           Our threat intelligence is updated continuously—multiple times per day—not weekly or monthly. This means you are always scanning against the absolute latest CVEs and zero-day threat intelligence, eliminating the risk of operating with an outdated vulnerability definition file.
-      - question: What kind of integrations do you offer with existing security tools?
-        answer: >-
-          We offer seamless integration with your existing workflow. This includes native hooks for CI/CD pipelines (like GitHub Actions and Jenkins), ticketing systems (Jira, ServiceNow), and communication tools (Slack) to automatically turn findings into trackable, prioritized remediation tickets.
       - question: Will using a hosted scanner slow down or impact my targets?
         answer: >-
-          Our scanners are engineered to be efficient and respectful of your network's capacity. You have granular control over scan intensity and scheduling, ensuring you can run comprehensive security checks without causing performance degradation to live production assets.
+          Our scanners are engineered to be efficient and respectful of your network's capacity. You cannot tune every low-level parameter — instead we provide a small set of safe, pre-configured options (scan profile, scheduling window, and target scope) that balance thoroughness with minimal impact to production systems.
       - question: Do I have to sign a long-term contract?
         answer: >-
-          No. All of our paid plans are offered on a flexible month-to-month subscription basis, allowing you to scale your usage up or down as your needs change. You can cancel at any time, and we stand by our 30-day money-back guarantee.
+          Our paid plans are billed on a yearly basis (annual subscriptions). For details on cancellations, prorations, or refunds please contact our support team.
       - question: How quickly can I get my first scan results?
         answer: >-
           Because our platform is hosted and requires zero local installation, you can configure your target and launch your first basic scan immediately after sign-up. Depending on the complexity of the target, you will typically see preliminary, actionable results within 5 to 30 minutes.
       - question: Where is my scanning data and report information stored?
         answer: >-
           All scan data is stored securely in encrypted cloud storage (using AES-256 encryption) within our certified data centers. We maintain strict geographical compliance and provide robust access controls to ensure only authorized users on your team can view the reports.
-      - question: If I cancel my subscription, what happens to my historical scan reports?
-        answer: >-
-          We allow you to retain access to your historical scan reports and data for 90 days after canceling your subscription, giving you ample time to export your records and maintain compliance archives. After 30 days, the data is securely and permanently deleted from our servers.
     elementId: faq-section
     colors: bg-neutral-fg-dark
     styles:
@@ -197,7 +202,7 @@ sections:
         justifyContent: center
 
 seo:
-  metaTitle: Hosted Vulnerability Scanners - Hacker Analytics
+  metaTitle: Hosted Vulnerability Scanners
   metaDescription: 'Zero install, maximum impact vulnerability scanning. Hosted Nmap and OpenVAS services for proactive security assessment with no maintenance required.'
   socialImage: /images/Hacker Analytics.png
   type: Seo

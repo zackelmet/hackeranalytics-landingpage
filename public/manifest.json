@@ -7,12 +7,12 @@
     "theme_color": "#0a0a23",
     "icons": [
         {
-            "src": "/images/Hacker Analytics-35x35.png",
+            "src": "/images/HA-logo.png",
             "sizes": "35x35",
             "type": "image/png"
         },
         {
-            "src": "/images/Hacker Analytics.png",
+            "src": "/images/HA-logo.png",
             "sizes": "192x192",
             "type": "image/png"
         }

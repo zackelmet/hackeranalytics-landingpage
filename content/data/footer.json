@@ -64,14 +64,19 @@
     "socialLinks": [
         {
             "altText": "Twitter link",
-            "url": "https://x.com/HackrAnalytics",
-            "icon": "twitter",
+            "altText": "X link",
+            "url": "https://x.com/vuln_scanners",
+            "icon": "x",
+            "target": "_blank",
+            "rel": "noopener noreferrer",
             "type": "Social"
         },
         {
             "altText": "LinkedIn link",
             "url": "https://www.linkedin.com/company/hacker-analytics/",
             "icon": "linkedin",
+            "target": "_blank",
+            "rel": "noopener noreferrer",
             "type": "Social"
         }
     ],

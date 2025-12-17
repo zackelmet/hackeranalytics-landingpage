@@ -47,11 +47,11 @@ function Page(props) {
                         <link rel="shortcut icon" href={site.favicon} />
                     </>
                 )}
-                <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon_io/favicon-32x32.png" />
-                <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon_io/favicon-16x16.png" />
-                <link rel="shortcut icon" href="/images/favicon_io/favicon.ico" />
-                <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon_io/apple-touch-icon.png" />
-                <link rel="manifest" href="/images/favicon_io/site.webmanifest" />
+                <link rel="icon" type="image/png" sizes="32x32" href="/images/HA-logo.png" />
+                <link rel="icon" type="image/png" sizes="16x16" href="/images/HA-logo.png" />
+                <link rel="shortcut icon" href="/images/HA-logo.png" />
+                <link rel="apple-touch-icon" sizes="180x180" href="/images/HA-logo.png" />
+                <link rel="manifest" href="/manifest.json" />
                 <meta name="theme-color" content="#0a0a23" />
             </Head>
             <PageLayout page={page} site={site} />

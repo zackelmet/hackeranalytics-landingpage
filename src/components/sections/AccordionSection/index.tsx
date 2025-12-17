@@ -74,7 +74,6 @@ export default function AccordionSection(props: AccordionSectionProps) {
                                 >
                                     <div className={classNames('accordion-icon', { 'rotate-45': isOpen })} aria-hidden />
                                     <div>
-                                        <div className="text-sm uppercase tracking-[0.12em] text-primary/80 mb-1">Question</div>
                                         <h3 className="text-xl font-semibold text-slate-50 leading-snug">{item.question}</h3>
                                     </div>
                                 </button>
