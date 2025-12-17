@@ -662,6 +662,9 @@ html, body, #__next, main, .sb-layout {
                 radial-gradient(circle at 80% 10%, rgba(0,254,217,.07), transparent 23%),
                 radial-gradient(circle at 50% 80%, rgba(0,140,255,.05), transparent 28%),
                 var(--bg) !important;
+
+    /* prevent unwanted horizontal scroll on small/medium screens */
+    overflow-x: hidden;
 }
 
 /* Force section surfaces to be semi-transparent when using neutral background tokens so the page background shows through */
@@ -988,4 +991,48 @@ html, body, #__next, main, .sb-layout {
 /* Force the ValueGridSection subtitle to be white (overrides text-slate-600) */
 .sb-component-value-grid .subtitle {
     color: #ffffff !important;
+}
+
+/* Hero globe sizing: make it visually smaller at large screens */
+.hero-globe {
+    max-width: 14rem !important;
+}
+
+@media (min-width: 1024px) {
+    .hero-globe {
+        max-width: 18rem !important;
+    }
+}
+
+/* Header & Footer: force dark navy background and white text as requested */
+.sb-component-header,
+.sb-component-footer {
+    background-color: #0a0a23 !important;
+    background: #0a0a23 !important;
+    color: #ffffff !important;
+}
+
+.sb-component-header a,
+.sb-component-footer a,
+.sb-component-header .sb-component-button,
+.sb-component-footer .sb-component-button,
+.sb-component-header .sb-component-link,
+.sb-component-footer .sb-component-link,
+.sb-component-header .sb-markdown,
+.sb-component-footer .sb-markdown {
+    color: #ffffff !important;
+}
+
+/* Footer bottom small text */
+.sb-footer-bottom,
+.sb-footer-bottom p,
+.sb-footer-bottom a {
+    color: #ffffff !important;
+    border-color: rgba(255,255,255,0.06) !important;
+}
+
+/* Ensure header logo variants keep contrast when white text applied */
+.sb-component-header img,
+.sb-component-footer img {
+    filter: none !important;
 }

@@ -10,8 +10,8 @@ sections:
     subtitle: Simplify your security workflow. Our hosted Nmap and OpenVAS services run on fast, optimized servers with no maintenance required.
     actions:
       - type: Button
-        label: View Use Cases
-        url: '#'
+        label: Scan Now
+        url: 'https://app.hackeranalytics.com/login'
         showIcon: true
         icon: arrowRight
         iconPosition: right
