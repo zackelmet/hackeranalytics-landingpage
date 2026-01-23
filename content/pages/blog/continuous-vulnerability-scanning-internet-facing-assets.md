@@ -24,5 +24,4 @@ seo:
   type: Seo
 type: PageLayout
 ---
-
 ```
