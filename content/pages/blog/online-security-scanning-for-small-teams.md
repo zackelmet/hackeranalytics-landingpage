@@ -1,27 +1,20 @@
 ---
-
-
-title: Online Security Scanning for Small Technical Teams
-slug: /blog/online-security-scanning-for-small-technical-teams
-sections:
-  - type: GenericSection
-    title:
-      text: Security scanning for small teams
-      color: text-dark
-      type: TitleBlock
-    subtitle: Practical scanning without a dedicated security team
-    text: >
-      Small technical teams benefit from hosted scanners that require minimal setup and provide clear prioritization. Look for simple reporting, integrations with issue trackers, and low false positive rates.
-    colors: bg-neutral-fg-dark
-    styles:
-      self:
-        padding:
-          - pt-8
-          - pb-8
-
+title: Online Security Scanning for Small Teams
+slug: /blog/online-security-scanning-for-small-teams
+date: '2026-01-23'
+excerpt: Practical security scanning solutions for resource-constrained teams.
+isFeatured: false
+tags:
+  - vulnerability-scanning
+  - security
+  - external-assessment
+type: PostLayout
+colors: bg-dark-fg-light
 seo:
   metaTitle: Online Security Scanning for Small Teams
-  metaDescription: Tailored advice for small technical teams adopting online security scanning with limited resources.
-type: PostLayout
-date: '2026-01-23'
+  metaDescription: Discover how online security scanning platforms help small teams maintain strong security posture without dedicated security engineers or infrastructure.
 ---
+
+Discover how online security scanning platforms help small teams maintain strong security posture without dedicated security engineers or infrastructure.
+
+This article explores practical security scanning solutions for resource-constrained teams.

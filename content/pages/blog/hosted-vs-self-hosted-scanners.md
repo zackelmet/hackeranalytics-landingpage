@@ -1,27 +1,20 @@
 ---
-
-
-title: Hosted Scanners vs Self-Hosted Scanners: Key Differences
-slug: /blog/hosted-scanners-vs-self-hosted-scanners
-sections:
-  - type: GenericSection
-    title:
-      text: Hosted vs self-hosted vulnerability scanners
-      color: text-dark
-      type: TitleBlock
-    subtitle: Trade-offs in control, cost, and operations
-    text: >
-      Hosted scanners provide ease-of-use and managed updates, while self-hosted scanners give you full control over scheduling, network placement, and custom checks. Choose based on team scale, compliance needs, and operational capacity.
-    colors: bg-neutral-fg-dark
-    styles:
-      self:
-        padding:
-          - pt-8
-          - pb-8
-
-seo:
-  metaTitle: Hosted vs Self-Hosted Scanners
-  metaDescription: Compare hosted and self-hosted vulnerability scanners across operational overhead, control, and cost.
-type: PostLayout
+title: Hosted vs Self-Hosted Vulnerability Scanners
+slug: /blog/hosted-vs-self-hosted-scanners
 date: '2026-01-23'
+excerpt: Compare hosted and self-hosted scanner deployment models.
+isFeatured: false
+tags:
+  - vulnerability-scanning
+  - security
+  - external-assessment
+type: PostLayout
+colors: bg-dark-fg-light
+seo:
+  metaTitle: Hosted vs Self-Hosted Vulnerability Scanners
+  metaDescription: Evaluate hosted versus self-hosted vulnerability scanners based on cost, maintenance, flexibility, and compliance requirements for your security program.
 ---
+
+Evaluate hosted versus self-hosted vulnerability scanners based on cost, maintenance, flexibility, and compliance requirements for your security program.
+
+This article explores compare hosted and self-hosted scanner deployment models.

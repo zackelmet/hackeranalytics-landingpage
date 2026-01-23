@@ -1,26 +1,20 @@
 ---
-
-
-title: Attack Surface Scanning for Domains and IP Addresses
-slug: /blog/attack-surface-scanning-domains-and-ip-addresses
-sections:
-  - type: GenericSection
-    title:
-      text: Attack surface scanning for domains and IPs
-      color: text-dark
-      type: TitleBlock
-    subtitle: Discover what's publicly visible about your assets
-    text: >
-      Attack surface scanning aggregates DNS, port, and asset discovery to give teams a clear map of what is externally reachable. Monitoring domains and IP ranges uncovers forgotten services, shadow IT, and misconfigured systems.
-    colors: bg-neutral-fg-dark
-    styles:
-      self:
-        padding:
-          - pt-8
-        type: PostLayout
-seo:
-  metaTitle: Attack Surface Scanning — Domains & IPs
-  metaDescription: How attack surface scanning for domains and IP addresses finds exposed services, shadow IT, and forgotten hosts.
-type: PostLayout
+title: Attack Surface Scanning for Domains and IP Ranges
+slug: /blog/attack-surface-scanning-domains-ip
 date: '2026-01-23'
+excerpt: Map your attack surface across domains and IP ranges.
+isFeatured: false
+tags:
+  - vulnerability-scanning
+  - security
+  - external-assessment
+type: PostLayout
+colors: bg-dark-fg-light
+seo:
+  metaTitle: Attack Surface Scanning for Domains and IP Ranges
+  metaDescription: Understand attack surface scanning for domains and IP ranges, how it identifies exposed services, and why regular scans help reduce external risk.
 ---
+
+Understand attack surface scanning for domains and IP ranges, how it identifies exposed services, and why regular scans help reduce external risk.
+
+This article explores map your attack surface across domains and ip ranges.

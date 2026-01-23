@@ -1,27 +1,20 @@
 ---
-
-
-title: TCP Port Scan Online: Identify Open Ports in Seconds
+title: TCP Port Scan Online to Identify Open Ports
 slug: /blog/tcp-port-scan-online-identify-open-ports
-sections:
-  - type: GenericSection
-    title:
-      text: TCP port scanning online
-      color: text-dark
-      type: TitleBlock
-    subtitle: Identify open TCP services quickly
-    text: >
-      Online TCP port scanners let you quickly verify which TCP ports are open on an internet-facing host. These quick checks are useful for diagnosing exposure and validating firewall configurations.
-    colors: bg-neutral-fg-dark
-    styles:
-      self:
-        padding:
-          - pt-8
-          - pb-8
-
-seo:
-  metaTitle: TCP Port Scan Online — Identify Open Ports
-  metaDescription: Use an online TCP port scanner to find open services on public hosts for quick diagnostics and security checks.
-type: PostLayout
 date: '2026-01-23'
+excerpt: Quickly identify open TCP ports with online scanning tools.
+isFeatured: false
+tags:
+  - vulnerability-scanning
+  - security
+  - external-assessment
+type: PostLayout
+colors: bg-dark-fg-light
+seo:
+  metaTitle: TCP Port Scan Online to Identify Open Ports
+  metaDescription: Use online TCP port scanners to quickly identify open services on public hosts for security diagnostics and firewall configuration validation.
 ---
+
+Use online TCP port scanners to quickly identify open services on public hosts for security diagnostics and firewall configuration validation.
+
+This article explores quickly identify open tcp ports with online scanning tools.

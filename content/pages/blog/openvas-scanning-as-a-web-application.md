@@ -1,27 +1,20 @@
 ---
-
-
 title: OpenVAS Scanning as a Web Application
 slug: /blog/openvas-scanning-as-a-web-application
-sections:
-  - type: GenericSection
-    title:
-      text: OpenVAS as a hosted web scanner
-      color: text-dark
-      type: TitleBlock
-    subtitle: Vulnerability scanning delivered via a web UI
-    text: >
-      OpenVAS (Greenbone) can be exposed via web interfaces that orchestrate scans and reporting. Hosted implementations provide scheduled scans, centralized reporting, and simplified management compared with running scanner instances yourself.
-    colors: bg-neutral-fg-dark
-    styles:
-      self:
-        padding:
-          - pt-8
-          - pb-8
-
+date: '2026-01-23'
+excerpt: Run OpenVAS scans from a web interface without local setup.
+isFeatured: false
+tags:
+  - vulnerability-scanning
+  - security
+  - external-assessment
+type: PostLayout
+colors: bg-dark-fg-light
 seo:
   metaTitle: OpenVAS Scanning as a Web Application
-  metaDescription: Understand how OpenVAS can be presented as a web-based scanner with hosted scheduling, reporting, and centralized management.
-type: PostLayout
-date: '2026-01-23'
+  metaDescription: Explore how hosted OpenVAS scanning works, providing comprehensive vulnerability assessments through a web interface without managing the scanner yourself.
 ---
+
+Explore how hosted OpenVAS scanning works, providing comprehensive vulnerability assessments through a web interface without managing the scanner yourself.
+
+This article explores run openvas scans from a web interface without local setup.

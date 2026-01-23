@@ -1,27 +1,20 @@
 ---
-
-
-title: How to Run Security Scans Safely Against Your Own Assets
-slug: /blog/how-to-run-security-scans-safely-against-your-own-assets
-sections:
-  - type: GenericSection
-    title:
-      text: Running security scans safely
-      color: text-dark
-      type: TitleBlock
-    subtitle: Permissions, scheduling, and impact mitigation
-    text: >
-      Always obtain authorization, schedule scans during low-traffic windows, and use non-intrusive checks when possible. Keep stakeholders informed and have remediation processes ready for critical findings.
-    colors: bg-neutral-fg-dark
-    styles:
-      self:
-        padding:
-          - pt-8
-          - pb-8
-
+title: How to Run Security Scans Safely
+slug: /blog/how-to-run-security-scans-safely
+date: '2026-01-23'
+excerpt: Run security scans without disrupting production systems.
+isFeatured: false
+tags:
+  - vulnerability-scanning
+  - security
+  - external-assessment
+type: PostLayout
+colors: bg-dark-fg-light
 seo:
   metaTitle: How to Run Security Scans Safely
-  metaDescription: Practical advice for safely running security scans against systems you own, including permissions and scheduling guidance.
-type: PostLayout
-date: '2026-01-23'
+  metaDescription: Understand best practices for running security scans safely, including rate limiting, scheduling, and avoiding disruption to production systems.
 ---
+
+Understand best practices for running security scans safely, including rate limiting, scheduling, and avoiding disruption to production systems.
+
+This article explores run security scans without disrupting production systems.

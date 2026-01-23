@@ -1,27 +1,20 @@
 ---
-
-
 title: Monitoring Your External Attack Surface Over Time
 slug: /blog/monitoring-your-external-attack-surface-over-time
-sections:
-  - type: GenericSection
-    title:
-      text: Monitor external attack surface over time
-      color: text-dark
-      type: TitleBlock
-    subtitle: Trend analysis and alerting
-    text: >
-      Monitoring changes to DNS, open ports, and certificate issuance over time helps teams detect regressions and unexpected exposures. Use change alerts and historical comparisons to prioritize investigations.
-    colors: bg-neutral-fg-dark
-    styles:
-      self:
-        padding:
-          - pt-8
-          - pb-8
-
+date: '2026-01-23'
+excerpt: Track changes to your external attack surface continuously.
+isFeatured: false
+tags:
+  - vulnerability-scanning
+  - security
+  - external-assessment
+type: PostLayout
+colors: bg-dark-fg-light
 seo:
   metaTitle: Monitoring Your External Attack Surface Over Time
-  metaDescription: Use historical scanning and alerts to monitor changes in your external attack surface and detect regressions quickly.
-type: PostLayout
-date: '2026-01-23'
+  metaDescription: Learn how to monitor your external attack surface over time, detecting new assets, tracking changes, and identifying security drift as infrastructure evolves.
 ---
+
+Learn how to monitor your external attack surface over time, detecting new assets, tracking changes, and identifying security drift as infrastructure evolves.
+
+This article explores track changes to your external attack surface continuously.
