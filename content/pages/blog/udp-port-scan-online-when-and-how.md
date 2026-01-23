@@ -22,6 +22,7 @@ seo:
   metaTitle: UDP Port Scan Online — When and How
   metaDescription: Learn about UDP port scanning, why it's different from TCP scanning, and when to use it for external asset assessments.
   type: Seo
-type: PageLayout
+  date: '2026-01-23'
+  type: PostLayout
 ---
 ```

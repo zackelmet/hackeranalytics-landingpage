@@ -16,12 +16,13 @@ sections:
       self:
         padding:
           - pt-8
-          - pb-8
-
+        date: '2026-01-23'
+        type: PostLayout
 seo:
   metaTitle: Attack Surface Scanning — Domains & IPs
   metaDescription: How attack surface scanning for domains and IP addresses finds exposed services, shadow IT, and forgotten hosts.
   type: Seo
-type: PageLayout
+  date: '2026-01-23'
+  type: PostLayout
 ---
 ```

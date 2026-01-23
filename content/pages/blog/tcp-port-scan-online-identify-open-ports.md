@@ -22,6 +22,7 @@ seo:
   metaTitle: TCP Port Scan Online — Identify Open Ports
   metaDescription: Use an online TCP port scanner to find open services on public hosts for quick diagnostics and security checks.
   type: Seo
-type: PageLayout
+  date: '2026-01-23'
+  type: PostLayout
 ---
 ```

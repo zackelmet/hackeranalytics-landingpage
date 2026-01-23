@@ -22,6 +22,7 @@ seo:
   metaTitle: Automated Security Scanning Without Managing Infrastructure
   metaDescription: Understand the benefits of hosted scanning services that remove operational overhead for security teams.
   type: Seo
-type: PageLayout
+  date: '2026-01-23'
+  type: PostLayout
 ---
 ```

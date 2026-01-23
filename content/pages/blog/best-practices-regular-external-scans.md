@@ -22,6 +22,7 @@ seo:
   metaTitle: Best Practices for Regular External Vulnerability Scans
   metaDescription: Establish cadence, ownership, and remediation processes for regular external vulnerability scanning.
   type: Seo
-type: PageLayout
+  date: '2026-01-23'
+  type: PostLayout
 ---
 ```

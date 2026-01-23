@@ -22,6 +22,7 @@ seo:
   metaTitle: DNS Enumeration & Security Analysis
   metaDescription: DNS enumeration techniques for security teams: record discovery, zone checks, and configuration validation.
   type: Seo
-type: PageLayout
+  date: '2026-01-23'
+  type: PostLayout
 ---
 ```

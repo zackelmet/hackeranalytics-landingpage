@@ -22,6 +22,7 @@ seo:
   metaTitle: Online Security Scanning for Small Teams
   metaDescription: Tailored advice for small technical teams adopting online security scanning with limited resources.
   type: Seo
-type: PageLayout
+  date: '2026-01-23'
+  type: PostLayout
 ---
 ```

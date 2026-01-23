@@ -22,6 +22,7 @@ seo:
   metaTitle: Hosted vs Self-Hosted Scanners
   metaDescription: Compare hosted and self-hosted vulnerability scanners across operational overhead, control, and cost.
   type: Seo
-type: PageLayout
+  date: '2026-01-23'
+  type: PostLayout
 ---
 ```

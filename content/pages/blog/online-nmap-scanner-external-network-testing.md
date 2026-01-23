@@ -22,6 +22,7 @@ seo:
   metaTitle: Online Nmap Scanner — External Network Testing
   metaDescription: Use an online Nmap scanner to discover open ports and services on internet-facing systems for external network testing.
   type: Seo
-type: PageLayout
+  date: '2026-01-23'
+  type: PostLayout
 ---
 ```

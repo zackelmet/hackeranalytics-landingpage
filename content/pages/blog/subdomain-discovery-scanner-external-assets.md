@@ -22,6 +22,7 @@ seo:
   metaTitle: Subdomain Discovery Scanner — External Assets
   metaDescription: Use subdomain discovery to find forgotten or shadow subdomains using DNS enumeration and public sources.
   type: Seo
-type: PageLayout
+  date: '2026-01-23'
+  type: PostLayout
 ---
 ```

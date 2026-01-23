@@ -22,6 +22,7 @@ seo:
   metaTitle: Reducing False Positives in Vulnerability Scans
   metaDescription: Tips to lower false positives in automated vulnerability scans through tuning, authentication, and correlation.
   type: Seo
-type: PageLayout
+  date: '2026-01-23'
+  type: PostLayout
 ---
 ```

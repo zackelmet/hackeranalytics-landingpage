@@ -22,6 +22,7 @@ seo:
   metaTitle: External Network Scanning for SaaS Infrastructure
   metaDescription: Guidance for scanning SaaS-hosted systems and multi-tenant services without disrupting shared infrastructure.
   type: Seo
-type: PageLayout
+  date: '2026-01-23'
+  type: PostLayout
 ---
 ```
