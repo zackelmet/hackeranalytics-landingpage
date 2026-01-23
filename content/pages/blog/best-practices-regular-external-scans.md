@@ -1,5 +1,6 @@
 ---
 
+
 title: Best Practices for Running Regular External Vulnerability Scans
 slug: /blog/best-practices-regular-external-vulnerability-scans
 sections:
@@ -22,5 +23,5 @@ seo:
   metaTitle: Best Practices for Regular External Vulnerability Scans
   metaDescription: Establish cadence, ownership, and remediation processes for regular external vulnerability scanning.
 type: PostLayout
-  date: '2026-01-23'
+date: '2026-01-23'
 ---

@@ -1,5 +1,6 @@
 ---
 
+
 title: Online Security Scanning for Small Technical Teams
 slug: /blog/online-security-scanning-for-small-technical-teams
 sections:
@@ -22,5 +23,5 @@ seo:
   metaTitle: Online Security Scanning for Small Teams
   metaDescription: Tailored advice for small technical teams adopting online security scanning with limited resources.
 type: PostLayout
-  date: '2026-01-23'
+date: '2026-01-23'
 ---

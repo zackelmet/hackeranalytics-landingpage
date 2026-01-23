@@ -1,5 +1,6 @@
 ---
 
+
 title: DNS Enumeration and Security Analysis Tool
 slug: /blog/dns-enumeration-and-security-analysis-tool
 sections:
@@ -22,5 +23,5 @@ seo:
   metaTitle: DNS Enumeration & Security Analysis
   metaDescription: DNS enumeration techniques for security teams: record discovery, zone checks, and configuration validation.
 type: PostLayout
-  date: '2026-01-23'
+date: '2026-01-23'
 ---

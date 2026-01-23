@@ -1,5 +1,6 @@
 ---
 
+
 title: TCP Port Scan Online: Identify Open Ports in Seconds
 slug: /blog/tcp-port-scan-online-identify-open-ports
 sections:
@@ -22,5 +23,5 @@ seo:
   metaTitle: TCP Port Scan Online — Identify Open Ports
   metaDescription: Use an online TCP port scanner to find open services on public hosts for quick diagnostics and security checks.
 type: PostLayout
-  date: '2026-01-23'
+date: '2026-01-23'
 ---

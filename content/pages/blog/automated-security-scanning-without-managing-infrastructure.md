@@ -1,5 +1,6 @@
 ---
 
+
 title: Automated Security Scanning Without Managing Infrastructure
 slug: /blog/automated-security-scanning-without-managing-infrastructure
 sections:
@@ -22,5 +23,5 @@ seo:
   metaTitle: Automated Security Scanning Without Managing Infrastructure
   metaDescription: Understand the benefits of hosted scanning services that remove operational overhead for security teams.
 type: PostLayout
-  date: '2026-01-23'
+date: '2026-01-23'
 ---

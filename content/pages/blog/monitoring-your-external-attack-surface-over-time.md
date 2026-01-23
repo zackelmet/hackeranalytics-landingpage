@@ -1,5 +1,6 @@
 ---
 
+
 title: Monitoring Your External Attack Surface Over Time
 slug: /blog/monitoring-your-external-attack-surface-over-time
 sections:
@@ -22,5 +23,5 @@ seo:
   metaTitle: Monitoring Your External Attack Surface Over Time
   metaDescription: Use historical scanning and alerts to monitor changes in your external attack surface and detect regressions quickly.
 type: PostLayout
-  date: '2026-01-23'
+date: '2026-01-23'
 ---

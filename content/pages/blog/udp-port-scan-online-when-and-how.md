@@ -1,5 +1,6 @@
 ---
 
+
 title: UDP Port Scan Online: When and How to Use It
 slug: /blog/udp-port-scan-online-when-and-how-to-use-it
 sections:
@@ -22,5 +23,5 @@ seo:
   metaTitle: UDP Port Scan Online — When and How
   metaDescription: Learn about UDP port scanning, why it's different from TCP scanning, and when to use it for external asset assessments.
 type: PostLayout
-  date: '2026-01-23'
+date: '2026-01-23'
 ---

@@ -1,5 +1,6 @@
 ---
 
+
 title: How to Run Security Scans Safely Against Your Own Assets
 slug: /blog/how-to-run-security-scans-safely-against-your-own-assets
 sections:
@@ -22,5 +23,5 @@ seo:
   metaTitle: How to Run Security Scans Safely
   metaDescription: Practical advice for safely running security scans against systems you own, including permissions and scheduling guidance.
 type: PostLayout
-  date: '2026-01-23'
+date: '2026-01-23'
 ---
