@@ -1,4 +1,5 @@
 ---
+
 title: External Network Scanning for SaaS Infrastructure
 slug: /blog/external-network-scanning-for-saas-infrastructure
 sections:
@@ -20,7 +21,6 @@ sections:
 seo:
   metaTitle: External Network Scanning for SaaS Infrastructure
   metaDescription: Guidance for scanning SaaS-hosted systems and multi-tenant services without disrupting shared infrastructure.
-  type: Seo
+type: PostLayout
   date: '2026-01-23'
-  type: PostLayout
 ---

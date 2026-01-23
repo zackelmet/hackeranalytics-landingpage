@@ -1,4 +1,5 @@
 ---
+
 title: ASN and IP Intelligence Scanning Explained
 slug: /blog/asn-and-ip-intelligence-scanning-explained
 sections:
@@ -20,7 +21,6 @@ sections:
 seo:
   metaTitle: ASN & IP Intelligence Scanning
   metaDescription: Learn about ASN and IP intelligence scanning and why it's useful for mapping external infrastructure and prioritizing monitoring.
-  type: Seo
+type: PostLayout
   date: '2026-01-23'
-  type: PostLayout
 ---

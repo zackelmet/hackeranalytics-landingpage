@@ -1,4 +1,5 @@
 ---
+
 title: OpenVAS Scanning as a Web Application
 slug: /blog/openvas-scanning-as-a-web-application
 sections:
@@ -20,7 +21,6 @@ sections:
 seo:
   metaTitle: OpenVAS Scanning as a Web Application
   metaDescription: Understand how OpenVAS can be presented as a web-based scanner with hosted scheduling, reporting, and centralized management.
-  type: Seo
+type: PostLayout
   date: '2026-01-23'
-  type: PostLayout
 ---

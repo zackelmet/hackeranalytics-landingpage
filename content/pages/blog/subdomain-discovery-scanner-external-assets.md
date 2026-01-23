@@ -1,4 +1,5 @@
 ---
+
 title: Subdomain Discovery Scanner for External Assets
 slug: /blog/subdomain-discovery-scanner-for-external-assets
 sections:
@@ -20,7 +21,6 @@ sections:
 seo:
   metaTitle: Subdomain Discovery Scanner — External Assets
   metaDescription: Use subdomain discovery to find forgotten or shadow subdomains using DNS enumeration and public sources.
-  type: Seo
+type: PostLayout
   date: '2026-01-23'
-  type: PostLayout
 ---

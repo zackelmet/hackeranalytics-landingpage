@@ -1,4 +1,5 @@
 ---
+
 title: Online Nmap Scanner for External Network Testing
 slug: /blog/online-nmap-scanner-external-network-testing
 sections:
@@ -20,7 +21,6 @@ sections:
 seo:
   metaTitle: Online Nmap Scanner — External Network Testing
   metaDescription: Use an online Nmap scanner to discover open ports and services on internet-facing systems for external network testing.
-  type: Seo
+type: PostLayout
   date: '2026-01-23'
-  type: PostLayout
 ---

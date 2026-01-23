@@ -1,4 +1,5 @@
 ---
+
 title: Hosted Scanners vs Self-Hosted Scanners: Key Differences
 slug: /blog/hosted-scanners-vs-self-hosted-scanners
 sections:
@@ -20,7 +21,6 @@ sections:
 seo:
   metaTitle: Hosted vs Self-Hosted Scanners
   metaDescription: Compare hosted and self-hosted vulnerability scanners across operational overhead, control, and cost.
-  type: Seo
+type: PostLayout
   date: '2026-01-23'
-  type: PostLayout
 ---

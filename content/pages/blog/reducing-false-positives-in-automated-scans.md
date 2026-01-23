@@ -1,4 +1,5 @@
 ---
+
 title: Reducing False Positives in Automated Vulnerability Scans
 slug: /blog/reducing-false-positives-in-automated-vulnerability-scans
 sections:
@@ -20,7 +21,6 @@ sections:
 seo:
   metaTitle: Reducing False Positives in Vulnerability Scans
   metaDescription: Tips to lower false positives in automated vulnerability scans through tuning, authentication, and correlation.
-  type: Seo
+type: PostLayout
   date: '2026-01-23'
-  type: PostLayout
 ---
