@@ -9,7 +9,7 @@ sections:
       type: TitleBlock
     subtitle:
     text: >
-      Stay ahead of real-world cyber threats in 5 minutes a week. Join thousands of IT pros getting the latest threat intel, attacker tools, and cybercrime insights. Free, every Sunday.
+      Practical guides and product updates for external vulnerability scanning and attack-surface monitoring. Find hands-on tutorials, scanner explainers, and operational advice to help you discover and fix exposures on your internet-facing assets.
     # actions removed - replaced by inline signup box media on the right column
     media:
       elementId: ''
