@@ -7,7 +7,7 @@ sections:
       text: 'Zero Install. Maximum Impact.'
       color: text-dark
       type: TitleBlock
-    subtitle: Simplify your security workflow. Our hosted Nmap and OpenVAS services run on fast, optimized servers with no maintenance required.
+    subtitle: Simplify your security workflow. Our hosted vuln scanners run on fast, optimized servers with no maintenance required.
     actions:
       - type: Button
         label: Scan Now
@@ -152,9 +152,9 @@ sections:
       - title: OpenVAS
         subtitle: Deep vulnerability assessment
         description: Comprehensive vuln scans with daily feed updates, rich findings, and prioritized remediation guidance.
-      - title: Nikto
-        subtitle: Web server misconfig checks
-        description: Targeted HTTP/HTTPS tests for outdated software, risky configs, and exposed defaults—no setup required.
+      - title: OWASP ZAP
+        subtitle: Web application security scanner
+        description: Automated and manual web app testing to find vulnerabilities like XSS, SQL injection, and misconfigurations—no setup required.
     elementId: key-features-section
     colors: bg-neutral-fg-dark
     styles:
@@ -200,6 +200,61 @@ sections:
           - pb-16
           - pr-4
         justifyContent: center
+
+  - type: ContactSection
+    elementId: contact-section
+    title:
+      text: 'Contact us'
+      color: text-dark
+      type: TitleBlock
+    subtitle: Get in touch with our team and get compliant.
+    text: Or chat with us directly on Linkedin 💬
+    media:
+      fields:
+        - name: name
+          label: Name
+          hideLabel: true
+          placeholder: Your name
+          isRequired: true
+          width: full
+          type: TextFormControl
+        - name: email
+          label: Email
+          hideLabel: true
+          placeholder: Your email
+          isRequired: true
+          width: full
+          type: EmailFormControl
+        - name: company
+          label: Company
+          hideLabel: true
+          placeholder: Your company
+          isRequired: false
+          width: full
+          type: TextFormControl
+        - name: message
+          label: Message
+          hideLabel: true
+          placeholder: Your message
+          isRequired: false
+          width: full
+          type: TextareaFormControl
+      elementId: contact-form
+      styles:
+        self:
+          padding:
+            - pt-6
+            - pb-6
+            - pl-6
+            - pr-6
+          borderColor: border-light
+          borderStyle: solid
+          borderWidth: 1
+          borderRadius: large
+      type: FormBlock
+      submitButton:
+        type: SubmitButtonFormControl
+        label: Contact Us
 
 seo:
   metaTitle: Hosted Vulnerability Scanners

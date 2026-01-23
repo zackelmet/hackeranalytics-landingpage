@@ -42,9 +42,9 @@
                 },
                 {
                     "type": "Link",
-                    "label": "Nikto",
-                    "altText": "Nikto",
-                    "url": "/nikto",
+                    "label": "OWASP ZAP",
+                    "altText": "OWASP ZAP",
+                    "url": "/owaspzap",
                     "showIcon": false,
                     "icon": "arrowRight",
                     "iconPosition": "right",

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useState } from 'react';
 import classNames from 'classnames';
 
 import { getComponent } from '../../components-registry';
@@ -10,6 +11,9 @@ import { Badge } from '../../atoms';
 
 export default function ContactSection(props) {
     const { elementId, colors, backgroundImage, badge, title, subtitle, text, media, styles = {}, enableAnnotations } = props;
+    const [submitting, setSubmitting] = useState(false);
+    const [submitted, setSubmitted] = useState(false);
+    const [error, setError] = useState(null);
 
     return (
         <Section
@@ -58,29 +62,76 @@ export default function ContactSection(props) {
                 </div>
 
                 {/* Single outline box containing the form - on wide screens the form sits right of the description */}
-                <form className="grid gap-4" data-netlify="true" name="contact" data-netlify-honeypot="bot-field">
-                    <input type="hidden" name="form-name" value="contact" />
-                    <p className="hidden">
-                        <label>
-                            Don’t fill this out if you’re human: <input name="bot-field" />
-                        </label>
-                    </p>
-                    <div className="flex flex-col gap-2 mb-4">
-                        <label className="font-semibold text-white tracking-wide mb-1" htmlFor="name">Your Name *</label>
-                        <input id="name" name="name" type="text" required className="bg-white/10 backdrop-blur border border-white/30 rounded-xl px-4 py-3 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all" placeholder="Enter your name" />
+                {!submitted ? (
+                    <form
+                        className="grid gap-4"
+                        data-netlify="true"
+                        name="contact"
+                        data-netlify-honeypot="bot-field"
+                        onSubmit={async (e) => {
+                            e.preventDefault();
+                            setError(null);
+                            const form = e.currentTarget as HTMLFormElement;
+                            const fd = new FormData(form);
+                            // honeypot check
+                            if (fd.get('bot-field')) {
+                                // silently exit if bot
+                                return;
+                            }
+                            // Ensure Netlify sees this submission via form-name
+                            fd.set('form-name', 'contact');
+                            const body = new URLSearchParams();
+                            for (const [k, v] of Array.from(fd.entries())) {
+                                body.append(k, String(v));
+                            }
+                            try {
+                                setSubmitting(true);
+                                const res = await fetch('/', {
+                                    method: 'POST',
+                                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                                    body: body.toString()
+                                });
+                                if (res.ok) {
+                                    setSubmitted(true);
+                                } else {
+                                    setError('Submission failed. Please try again later.');
+                                }
+                            } catch (err) {
+                                setError('Submission failed. Please try again later.');
+                            } finally {
+                                setSubmitting(false);
+                            }
+                        }}
+                    >
+                        <input type="hidden" name="form-name" value="contact" />
+                        <p className="hidden">
+                            <label>
+                                Don’t fill this out if you’re human: <input name="bot-field" />
+                            </label>
+                        </p>
+                        <div className="flex flex-col gap-2 mb-4">
+                            <label className="font-semibold text-white tracking-wide mb-1" htmlFor="name">Your Name *</label>
+                            <input id="name" name="name" type="text" required className="bg-white/10 backdrop-blur border border-white/30 rounded-xl px-4 py-3 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all" placeholder="Enter your name" />
+                        </div>
+                        <div className="flex flex-col gap-2 mb-4">
+                            <label className="font-semibold text-white tracking-wide mb-1" htmlFor="email">Email Address *</label>
+                            <input id="email" name="email" type="email" required className="bg-white/10 backdrop-blur border border-white/30 rounded-xl px-4 py-3 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all" placeholder="Enter your email" />
+                        </div>
+                        <div className="flex flex-col gap-2 mb-6">
+                            <label className="font-semibold text-white tracking-wide mb-1" htmlFor="message">Message *</label>
+                            <textarea id="message" name="message" className="bg-white/10 backdrop-blur border border-white/30 rounded-xl px-4 py-3 text-white placeholder-gray-300 min-h-[100px] focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all" placeholder="Type your message..." />
+                        </div>
+                        {error && <div className="text-red-400 mb-2">{error}</div>}
+                        <button type="submit" disabled={submitting} className="w-full py-3 px-6 bg-gradient-to-r from-blue-700 via-blue-500 to-indigo-600 text-white font-bold rounded-xl shadow-lg hover:from-blue-800 hover:to-indigo-700 transition-all border border-white/20 backdrop-blur disabled:opacity-60">
+                            <span className="tracking-wide">{submitting ? 'Sending...' : 'Send Message'}</span>
+                        </button>
+                    </form>
+                ) : (
+                    <div className="w-full border border-white/6 rounded-lg p-6 bg-white/5 text-white">
+                        <h3 className="text-xl font-semibold mb-2">Thanks — we got your message</h3>
+                        <p className="text-base">We'll get back to you shortly. If it's urgent, reach us on LinkedIn.</p>
                     </div>
-                    <div className="flex flex-col gap-2 mb-4">
-                        <label className="font-semibold text-white tracking-wide mb-1" htmlFor="email">Email Address *</label>
-                        <input id="email" name="email" type="email" required className="bg-white/10 backdrop-blur border border-white/30 rounded-xl px-4 py-3 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all" placeholder="Enter your email" />
-                    </div>
-                    <div className="flex flex-col gap-2 mb-6">
-                        <label className="font-semibold text-white tracking-wide mb-1" htmlFor="message">Message *</label>
-                        <textarea id="message" name="message" className="bg-white/10 backdrop-blur border border-white/30 rounded-xl px-4 py-3 text-white placeholder-gray-300 min-h-[100px] focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all" placeholder="Type your message..." />
-                    </div>
-                    <button type="submit" className="w-full py-3 px-6 bg-gradient-to-r from-blue-700 via-blue-500 to-indigo-600 text-white font-bold rounded-xl shadow-lg hover:from-blue-800 hover:to-indigo-700 transition-all border border-white/20 backdrop-blur">
-                        <span className="tracking-wide">Send Message</span>
-                    </button>
-                </form>
+                )}
             </div>
         </Section>
     );
