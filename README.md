@@ -1,3 +1,5 @@
-# HackerAnalytics — Landing Page
+# HackerAnalytics — Hosted Vulnerability Scanners
 
-This repository is the landing page for HackerAnalytics — the marketing site for hosted scanners and CTI.
+HackerAnalytics provides hosted vulnerability scanning for internet-facing assets. Our cloud-based scanners (Nmap, OpenVAS, OWASP ZAP and related tooling) discover open services, surface vulnerabilities, and monitor external attack surfaces — all without requiring you to install or manage scanner infrastructure.
+
+This repository contains the marketing landing page and site content for the HackerAnalytics product.
