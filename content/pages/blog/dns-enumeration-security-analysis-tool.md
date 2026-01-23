@@ -1,4 +1,3 @@
-```markdown
 ---
 title: DNS Enumeration and Security Analysis Tool
 slug: /blog/dns-enumeration-and-security-analysis-tool
@@ -25,4 +24,3 @@ seo:
   date: '2026-01-23'
   type: PostLayout
 ---
-```

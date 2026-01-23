@@ -1,4 +1,3 @@
-```markdown
 ---
 title: Online Nmap Scanner for External Network Testing
 slug: /blog/online-nmap-scanner-external-network-testing
@@ -25,4 +24,3 @@ seo:
   date: '2026-01-23'
   type: PostLayout
 ---
-```

@@ -1,4 +1,3 @@
-```markdown
 ---
 title: External Network Scanning for SaaS Infrastructure
 slug: /blog/external-network-scanning-for-saas-infrastructure
@@ -25,4 +24,3 @@ seo:
   date: '2026-01-23'
   type: PostLayout
 ---
-```

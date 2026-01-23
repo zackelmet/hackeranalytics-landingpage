@@ -1,4 +1,3 @@
-```markdown
 ---
 title: Reducing False Positives in Automated Vulnerability Scans
 slug: /blog/reducing-false-positives-in-automated-vulnerability-scans
@@ -25,4 +24,3 @@ seo:
   date: '2026-01-23'
   type: PostLayout
 ---
-```

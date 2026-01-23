@@ -1,4 +1,3 @@
-```markdown
 ---
 title: UDP Port Scan Online: When and How to Use It
 slug: /blog/udp-port-scan-online-when-and-how-to-use-it
@@ -25,4 +24,3 @@ seo:
   date: '2026-01-23'
   type: PostLayout
 ---
-```

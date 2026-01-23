@@ -1,4 +1,3 @@
-```markdown
 ---
 title: Subdomain Discovery Scanner for External Assets
 slug: /blog/subdomain-discovery-scanner-for-external-assets
@@ -25,4 +24,3 @@ seo:
   date: '2026-01-23'
   type: PostLayout
 ---
-```

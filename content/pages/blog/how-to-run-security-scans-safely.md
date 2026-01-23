@@ -1,4 +1,3 @@
-```markdown
 ---
 title: How to Run Security Scans Safely Against Your Own Assets
 slug: /blog/how-to-run-security-scans-safely-against-your-own-assets
@@ -25,4 +24,3 @@ seo:
   date: '2026-01-23'
   type: PostLayout
 ---
-```

@@ -1,4 +1,3 @@
-```markdown
 ---
 title: Attack Surface Scanning for Domains and IP Addresses
 slug: /blog/attack-surface-scanning-domains-and-ip-addresses
@@ -25,4 +24,3 @@ seo:
   date: '2026-01-23'
   type: PostLayout
 ---
-```

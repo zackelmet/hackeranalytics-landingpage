@@ -1,4 +1,3 @@
-```markdown
 ---
 title: Online Security Scanning for Small Technical Teams
 slug: /blog/online-security-scanning-for-small-technical-teams
@@ -25,4 +24,3 @@ seo:
   date: '2026-01-23'
   type: PostLayout
 ---
-```

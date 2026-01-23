@@ -1,4 +1,3 @@
-```markdown
 ---
 title: ASN and IP Intelligence Scanning Explained
 slug: /blog/asn-and-ip-intelligence-scanning-explained
@@ -25,4 +24,3 @@ seo:
   date: '2026-01-23'
   type: PostLayout
 ---
-```

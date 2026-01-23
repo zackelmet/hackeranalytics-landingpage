@@ -1,4 +1,3 @@
-```markdown
 ---
 title: Monitoring Your External Attack Surface Over Time
 slug: /blog/monitoring-your-external-attack-surface-over-time
@@ -25,4 +24,3 @@ seo:
   date: '2026-01-23'
   type: PostLayout
 ---
-```

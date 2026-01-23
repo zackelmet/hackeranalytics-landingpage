@@ -1,4 +1,3 @@
-```markdown
 ---
 title: Best Practices for Running Regular External Vulnerability Scans
 slug: /blog/best-practices-regular-external-vulnerability-scans
@@ -25,4 +24,3 @@ seo:
   date: '2026-01-23'
   type: PostLayout
 ---
-```

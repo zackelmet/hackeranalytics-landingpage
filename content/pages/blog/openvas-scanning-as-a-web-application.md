@@ -1,4 +1,3 @@
-```markdown
 ---
 title: OpenVAS Scanning as a Web Application
 slug: /blog/openvas-scanning-as-a-web-application
@@ -25,4 +24,3 @@ seo:
   date: '2026-01-23'
   type: PostLayout
 ---
-```

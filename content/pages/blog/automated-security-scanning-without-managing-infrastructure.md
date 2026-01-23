@@ -1,4 +1,3 @@
-```markdown
 ---
 title: Automated Security Scanning Without Managing Infrastructure
 slug: /blog/automated-security-scanning-without-managing-infrastructure
@@ -25,4 +24,3 @@ seo:
   date: '2026-01-23'
   type: PostLayout
 ---
-```

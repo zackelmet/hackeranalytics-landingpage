@@ -1,4 +1,3 @@
-```markdown
 ---
 title: TCP Port Scan Online: Identify Open Ports in Seconds
 slug: /blog/tcp-port-scan-online-identify-open-ports
@@ -25,4 +24,3 @@ seo:
   date: '2026-01-23'
   type: PostLayout
 ---
-```

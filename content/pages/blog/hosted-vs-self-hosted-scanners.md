@@ -1,4 +1,3 @@
-```markdown
 ---
 title: Hosted Scanners vs Self-Hosted Scanners: Key Differences
 slug: /blog/hosted-scanners-vs-self-hosted-scanners
@@ -25,4 +24,3 @@ seo:
   date: '2026-01-23'
   type: PostLayout
 ---
-```
