@@ -1,27 +1,29 @@
+# HackerAnalytics — Landing Page
 
+HackerAnalytics is a small security-focused SaaS project and CTI initiative that offers hosted scanning tools and related threat intelligence content. This repository contains the marketing landing site: hero, feature sections, scanner pages (Nmap, OpenVAS, OWASP ZAP), FAQs, and contact forms.
 
-# Hacker Analytics
+Quick summary
+- Purpose: marketing and product landing page for HackerAnalytics.
+- Tech: Next.js (pages router), Tailwind CSS, content-driven sections from `content/`.
+- Where to edit: site content lives in `content/pages/` (Markdown) and `content/data/` (site/header/footer JSON). React components are in `src/components/`.
 
-## Vision
+Local development
+1. Install dependencies:
 
-Hacker Analytics is a CTI (Cyber Threat Intelligence) research organization. Our mission is to:
+```bash
+npm install
+```
 
-- Provide actionable, independent threat intelligence and analysis for security teams, researchers, and decision-makers.
-- Deliver original research, commentary, and reporting on cyber threats, actors, and trends.
-- Build a trusted platform for CTI professionals to share insights, collaborate, and advance the field.
-- Empower the community with open, transparent, and high-quality intelligence.
+2. Run dev server:
 
-## What We Do
+```bash
+npm run dev
+```
 
-- Publish in-depth research and analysis on cyber threats, campaigns, and actors.
-- Offer expert commentary and opinion on the evolving threat landscape.
-- Foster collaboration and knowledge sharing among CTI professionals.
-- Advocate for transparency, ethics, and rigor in threat intelligence.
+3. Make content changes: edit Markdown/JSON, then commit and push.
 
-## Our Approach
+Notes
+- Netlify: this repo is connected to Netlify for automatic deploys. Renaming the GitHub repository may trigger a redeploy depending on your Netlify configuration.
+- Forms: contact and request forms use Netlify form handling; the contact form also includes an AJAX UX improvement.
 
-- Independent, evidence-based research
-- Clear, accessible reporting and communication
-- Community-driven collaboration
-- Commitment to open standards and responsible disclosure
-
+If you'd like, I can rename the GitHub repository to `hackeranalytics-landingpage` (I can do this now using the `gh` CLI and update your local `origin` remote).
