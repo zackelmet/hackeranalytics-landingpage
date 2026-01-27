@@ -48,7 +48,7 @@
     <lastmod>2026-01-23</lastmod>
   </url>
   <url>
-    <loc>https://hackeranalytics.com/</loc>
+    <loc>https://hackeranalytics.com/blog</loc>
   </url>
   <url>
     <loc>https://hackeranalytics.com/malware-report/test1</loc>
@@ -299,6 +299,9 @@
   </url>
   <url>
     <loc>https://hackeranalytics.com/dashboard</loc>
+  </url>
+  <url>
+    <loc>https://hackeranalytics.com/</loc>
   </url>
   <url>
     <loc>https://hackeranalytics.com/malware-report</loc>
