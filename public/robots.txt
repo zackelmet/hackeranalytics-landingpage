@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
+Sitemap: https://hackeranalytics.com/api/sitemap.xml
 Sitemap: https://hackeranalytics.com/sitemap.xml
