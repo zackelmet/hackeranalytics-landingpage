@@ -41,7 +41,7 @@ export default function ScreenshotShowcaseSection(props) {
                         <div>
                             <h2 className="text-4xl font-bold mb-4">{title}</h2>
                             <p className="text-lg opacity-80">
-                                Trusted by Fortune 100 companies, government agencies, and IT professionals worldwide.
+                                Trusted by Fortune 500 companies, government agencies, and IT professionals worldwide.
                             </p>
                         </div>
 
