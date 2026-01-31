@@ -4,7 +4,7 @@ import { allContent } from '../utils/local-content';
 import { getComponent } from '../components/components-registry';
 import { resolveStaticProps } from '../utils/static-props-resolvers';
 import { resolveStaticPaths } from '../utils/static-paths-resolvers';
-import { seoGenerateTitle, seoGenerateMetaTags, seoGenerateMetaDescription } from '../utils/seo-utils';
+import { seoGenerateTitle, seoGenerateMetaTags, seoGenerateMetaDescription, seoGenerateCanonicalUrl } from '../utils/seo-utils';
 
 function Page(props) {
     // Safety check for undefined props
@@ -28,11 +28,13 @@ function Page(props) {
     const title = seoGenerateTitle(page, site);
     const metaTags = seoGenerateMetaTags(page, site);
     const metaDescription = seoGenerateMetaDescription(page, site);
+    const canonicalUrl = seoGenerateCanonicalUrl(page, site);
     return (
         <>
             <Head>
                 <title>{title}</title>
                 {metaDescription && <meta name="description" content={metaDescription} />}
+                {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
                 {metaTags.map((metaTag) => {
                     if (metaTag.format === 'property') {
                         // OpenGraph meta tags (og:*) should be have the format <meta property="og:…" content="…">

@@ -1,6 +1,6 @@
 ---
 title: Nmap
-slug: nmap
+slug: nmap-tool
 date: '2025-11-19'
 excerpt: >-
   Network mapper and port scanner
@@ -21,7 +21,7 @@ colors: bg-dark-fg-light
 
 # Nmap
 
-**URL:** [https://nmap.org/](https://nmap.org/)  
+**URL:** [https://nmap.org/](https://nmap.org/)
 
 Discover the power of Nmap, the ultimate network mapper and port scanner designed for IT professionals and cybersecurity enthusiasts. With its ability to identify devices on a network, Nmap provides a comprehensive view of the services and security vulnerabilities present. Whether you're managing a corporate network or conducting a penetration test, this tool is essential for understanding your digital landscape.
 

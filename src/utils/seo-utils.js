@@ -95,3 +95,13 @@ export function seoGenerateOgImage(page, site) {
     }
     return null;
 }
+
+export function seoGenerateCanonicalUrl(page, site) {
+    if (!page) {
+        return null;
+    }
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || site?.env?.URL || 'https://hackeranalytics.com';
+    const slug = page.__metadata?.urlPath || page.slug || '/';
+    const cleanSlug = slug.startsWith('/') ? slug : '/' + slug;
+    return baseUrl + cleanSlug;
+}

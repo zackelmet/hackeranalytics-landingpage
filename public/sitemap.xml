@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://hackeranalytics.com/cti-agents</loc>
+    <loc>https://hackeranalytics.com/ai-pentesting</loc>
   </url>
   <url>
     <loc>https://hackeranalytics.com/blog/asn-ip-intelligence-scanning-explained</loc>
@@ -195,7 +195,7 @@
     <lastmod>2025-11-19</lastmod>
   </url>
   <url>
-    <loc>https://hackeranalytics.com/nmap</loc>
+    <loc>https://hackeranalytics.com/nmap-tool</loc>
     <lastmod>2025-11-19</lastmod>
   </url>
   <url>
@@ -311,6 +311,9 @@
   </url>
   <url>
     <loc>https://hackeranalytics.com/owaspzap</loc>
+  </url>
+  <url>
+    <loc>https://hackeranalytics.com/nmap</loc>
   </url>
   <url>
     <loc>https://hackeranalytics.com/openvas</loc>
