@@ -12,7 +12,7 @@ sections:
       OWASP ZAP (Zed Attack Proxy) is a leading open-source web application security scanner that helps find vulnerabilities in web applications. It provides automated scanning and manual testing tools to identify security issues like XSS, SQL injection, and misconfigurations.
     media:
       type: ImageBlock
-      url: /images/icon2.svg
+      url: /images/icons/section/owasp_zap.jpeg
       altText: OWASP ZAP overview
     colors: bg-neutral-fg-dark
     styles:
