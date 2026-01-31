@@ -3,7 +3,7 @@ title: Cyber Threat Intelligence
 slug: cyber-threat-intelligence
 sections:
   - title:
-      text: "Threat Intelligence Built for Audit Readiness"
+      text: 'Threat Intelligence Built for Audit Readiness'
       color: text-light
       styles:
         self:
@@ -49,7 +49,7 @@ sections:
 
   - type: BasicSection
     title:
-      text: "Turn CTI into Compliance Evidence"
+      text: 'Turn CTI into Compliance Evidence'
       color: text-dark
       type: TitleBlock
     # Convert to structured feature cards for better scannability
@@ -72,7 +72,7 @@ sections:
 
   - type: BasicSection
     title:
-      text: "Compliance Alignment: SOC 2, PCI DSS 10, NIST CSF DE.CM"
+      text: 'Compliance Alignment: SOC 2, PCI DSS 10, NIST CSF DE.CM'
       color: text-dark
       type: TitleBlock
     # Render each framework as a card with short supporting copy so the page is easier to scan
@@ -137,10 +137,10 @@ sections:
 
   - type: ContactSection
     title:
-      text: "Contact us"
+      text: 'Contact us'
       color: text-dark
       type: TitleBlock
-      subtitle: Get in touch with our team and get compliant.
+      subtitle: Have questions, need support, or want to request a feature? Our team is here to help.
     text: Or chat with us directly on Linkedin 💬
     media:
       fields:
@@ -168,7 +168,7 @@ sections:
         - name: goals
           label: Project Goals
           hideLabel: true
-          placeholder: What compliance frameworks do you need to satisfy? 
+          placeholder: What compliance frameworks do you need to satisfy?
           isRequired: false
           width: full
           type: TextFormControl

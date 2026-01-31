@@ -89,7 +89,7 @@ export default function Footer(props) {
                                 className={classNames('sb-markdown', 'text-sm', 'mb-4', { 'sm:order-first sm:mr-12': legalLinks.length > 0 })}
                                 {...(enableAnnotations && { 'data-sb-field-path': 'copyrightText' })}
                             >
-                                {copyrightText}
+                                {copyrightText.replace(/© \d{4}/, `© ${new Date().getFullYear()}`)}
                             </Markdown>
                         )}
                         <div className="footer-badge">Powered by open source</div>

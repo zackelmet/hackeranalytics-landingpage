@@ -4,10 +4,10 @@ slug: /newsletter
 sections:
   - type: GenericSection
     title:
-      text: Real attacks. Real tools. 
+      text: Real attacks. Real tools.
       color: text-dark
       type: TitleBlock
-    subtitle: 
+    subtitle:
     text: >
       Stay ahead of real-world cyber threats in 5 minutes a week. Join thousands of IT pros getting the latest threat intel, attacker tools, and cybercrime insights. Free, every Sunday.
     # actions removed - replaced by inline signup box media on the right column
@@ -85,10 +85,10 @@ sections:
   - type: ContactSection
     elementId: contact-section
     title:
-      text: "Contact us"
+      text: 'Contact us'
       color: text-dark
       type: TitleBlock
-    subtitle: Get in touch with our team and get compliant.
+    subtitle: Have questions, need support, or want to request a feature? Our team is here to help.
     text: Or chat with us directly on Linkedin 💬
     media:
       fields:
@@ -116,7 +116,7 @@ sections:
         - name: goals
           label: Project Goals
           hideLabel: true
-          placeholder: What compliance frameworks do you need to satisfy? 
+          placeholder: What compliance frameworks do you need to satisfy?
           isRequired: false
           width: full
           type: TextFormControl
@@ -157,7 +157,7 @@ sections:
       justifyContent: center
 seo:
   metaTitle: Hacker Analytics - Deep Cyber Threat Intel
-  metaDescription: "Hacker Analytics delivers advanced cyber threat intelligence, compliance automation, and real-time monitoring for modern organizations. Protect your business, meet regulatory requirements, and stay ahead of emerging threats."
+  metaDescription: 'Hacker Analytics delivers advanced cyber threat intelligence, compliance automation, and real-time monitoring for modern organizations. Protect your business, meet regulatory requirements, and stay ahead of emerging threats.'
   socialImage: /images/Hacker Analytics.png
   type: Seo
 type: PageLayout

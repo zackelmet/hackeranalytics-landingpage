@@ -90,7 +90,7 @@ sections:
       text: 'Contact us'
       color: text-dark
       type: TitleBlock
-    subtitle: Get in touch with our team and get compliant.
+    subtitle: Have questions, need support, or want to request a feature? Our team is here to help.
     text: Or chat with us directly on Linkedin 💬
     media:
       fields:
