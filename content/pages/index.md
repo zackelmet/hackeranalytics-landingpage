@@ -46,7 +46,7 @@ sections:
           - pb-12
     links:
       - name: Hacker News
-        href: https://news.ycombinator.com
+        href: https://news.ycombinator.com/item?id=46836846
         img: /images/logos/y-combinator-news.png
       - name: Product Hunt
         href: https://www.producthunt.com
@@ -138,6 +138,52 @@ sections:
         justifyContent: center
       subtitle:
         textAlign: left
+
+  - type: ScreenshotShowcaseSection
+    title: Key Features
+    elementId: screenshot-showcase
+    colors: bg-neutral-fg-dark
+    styles:
+      self:
+        padding:
+          - pt-20
+          - pl-8
+          - pb-20
+          - pr-8
+    features:
+      - title: Attack Surface Discovery
+        description: Identify forgotten assets and poorly maintained endpoints. Complete network visibility for both Red and Blue Teams.
+      - title: Zero Installation
+        description: Fully hosted service with nothing to install or maintain. Launch scans whenever you need, from anywhere.
+      - title: Continuous Vulnerability Management
+        description: Schedule automated OpenVAS and Nmap scans for ongoing vulnerability detection and firewall monitoring.
+      - title: Intuitive Interface
+        description: Launch comprehensive vulnerability scans with a simple form. Select your options and receive detailed results.
+    screenshots:
+      - src: /images/screenshots/dashboard.png
+        alt: Dashboard overview
+        top: 5%
+        left: 0%
+        width: 75%
+        className: ''
+      - src: /images/screenshots/targets.png
+        alt: Targets management
+        top: 25%
+        left: 25%
+        width: 75%
+        className: ''
+      - src: /images/screenshots/targets-newscan.png
+        alt: New scan configuration
+        top: 45%
+        left: 10%
+        width: 70%
+        className: ''
+      - src: /images/screenshots/targets-scanhistory.png
+        alt: Scan history
+        top: 60%
+        left: 30%
+        width: 65%
+        className: ''
 
   - type: ValueGridSection
     title:

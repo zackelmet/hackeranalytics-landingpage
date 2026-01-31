@@ -67,6 +67,7 @@ const components = {
     ValueGridSection: dynamic(() => import('./sections/ValueGridSection')),
     PainPointsSection: dynamic(() => import('./sections/PainPointsSection')),
     AsSeenInSection: dynamic(() => import('./sections/AsSeenInSection')),
+    ScreenshotShowcaseSection: dynamic(() => import('./sections/ScreenshotShowcaseSection')),
     PostFeedSection: dynamic(() => import('./sections/PostFeedSection')),
     ToolsHeroSection: dynamic(() => import('./sections/ToolsHeroSection')),
     PricingSection: dynamic(() => import('./sections/PricingSection')),
