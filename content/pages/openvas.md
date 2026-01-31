@@ -12,7 +12,7 @@ sections:
       OpenVAS (now part of Greenbone's toolset) is a full-featured vulnerability scanner that performs comprehensive checks across hosts and services. It provides detailed findings with severity ratings and remediation guidance.
     media:
       type: ImageBlock
-      url: /images/icon3.svg
+      url: /images/icons/section/openvas.jpeg
       altText: OpenVAS overview
     colors: bg-neutral-fg-dark
     styles:

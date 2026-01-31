@@ -12,7 +12,7 @@ sections:
       Use Nmap to discover open ports and services on Internet-facing systems. Our Nmap offering provides accurate port status and service detection so you can quickly identify exposed services, verify firewall rules, and map your external attack surface.
     media:
       type: ImageBlock
-      url: /images/icon1.svg
+      url: /images/icons/section/nmap.jpeg
       altText: Nmap overview
     colors: bg-neutral-fg-dark
     styles:
