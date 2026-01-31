@@ -64,8 +64,8 @@ export default function ScreenshotShowcaseSection(props) {
                                         </svg>
                                     </div>
                                     <div>
-                                        <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-                                        <p className="opacity-75 leading-relaxed">{feature.description}</p>
+                                        <h3 className="text-xl font-semibold mb-2 text-slate-100 !opacity-100">{feature.title}</h3>
+                                        <p className="leading-relaxed text-slate-100 !opacity-100">{feature.description}</p>
                                     </div>
                                 </div>
                             ))}
