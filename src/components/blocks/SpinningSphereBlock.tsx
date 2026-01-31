@@ -77,64 +77,37 @@ export default function SpinningSphereBlock(props: SpinningSphereBlockProps) {
         renderer.domElement.style.boxShadow = 'none';
         renderer.domElement.style.border = 'none';
 
-        // Sphere geometry
-        const geometry = new THREE.SphereGeometry(1, 64, 64);
-        // Cyberpunk grid skin texture
-        const skinCanvas = document.createElement('canvas');
-        skinCanvas.width = 512;
-        skinCanvas.height = 512;
-        const skinCtx = skinCanvas.getContext('2d');
-        if (skinCtx) {
-            // Darker base for more contrast
-            skinCtx.fillStyle = '#10131a';
-            skinCtx.fillRect(0, 0, 512, 512);
-            // Draw grid with glow
-            skinCtx.save();
-            skinCtx.shadowColor = '#00fed9';
-            skinCtx.shadowBlur = 12;
-            skinCtx.strokeStyle = '#00fed9';
-            skinCtx.lineWidth = 2.5;
-            for (let i = 0; i < 512; i += 32) {
-                skinCtx.beginPath();
-                skinCtx.moveTo(i, 0);
-                skinCtx.lineTo(i, 512);
-                skinCtx.stroke();
-                skinCtx.beginPath();
-                skinCtx.moveTo(0, i);
-                skinCtx.lineTo(512, i);
-                skinCtx.stroke();
-            }
-            skinCtx.restore();
-            // Neon dots with stronger glow
-            for (let i = 0; i < 30; i++) {
-                skinCtx.save();
-                skinCtx.beginPath();
-                skinCtx.arc(Math.random() * 512, Math.random() * 512, 8, 0, 2 * Math.PI);
-                skinCtx.fillStyle = ['#00fed9', '#ff00ea', '#39ff14', '#fff'][Math.floor(Math.random() * 4)];
-                skinCtx.shadowColor = skinCtx.fillStyle;
-                skinCtx.shadowBlur = 22;
-                skinCtx.globalAlpha = 0.85;
-                skinCtx.fill();
-                skinCtx.restore();
-            }
-        }
-        const skinTexture = new THREE.CanvasTexture(skinCanvas);
+        // Sphere geometry (larger)
+        const geometry = new THREE.SphereGeometry(1.25, 64, 64);
+        // Load Earth texture
+        const textureLoader = new THREE.TextureLoader();
+        const earthTexture = textureLoader.load('/images/earthtexture.jpeg');
         const material = new THREE.MeshStandardMaterial({
-            map: skinTexture,
+            map: earthTexture,
             metalness: 0.7,
             roughness: 0.3,
-            emissive: new THREE.Color('#00fed9'),
-            emissiveIntensity: 0.35,
         });
         const sphere = new THREE.Mesh(geometry, material);
         scene.add(sphere);
+
+        // Add glow effect using a slightly larger, transparent sphere
+        const glowGeometry = new THREE.SphereGeometry(1.32, 64, 64);
+        const glowMaterial = new THREE.MeshBasicMaterial({
+            color: 0x00bfff,
+            transparent: true,
+            opacity: 0.25,
+            blending: THREE.AdditiveBlending,
+            side: THREE.BackSide,
+        });
+        const glow = new THREE.Mesh(glowGeometry, glowMaterial);
+        scene.add(glow);
 
         // Moving particles
         const particles: THREE.Mesh[] = [];
         const trails: THREE.Mesh[][] = [];
         const trailLength = 10;
         for (let i = 0; i < 16; i++) {
-            const pointGeo = new THREE.SphereGeometry(0.06, 16, 16);
+            const pointGeo = new THREE.SphereGeometry(0.035, 16, 16); // smaller particles
             const pointMat = new THREE.MeshBasicMaterial({ color: '#fff' });
             const point = new THREE.Mesh(pointGeo, pointMat);
             scene.add(point);
@@ -142,7 +115,7 @@ export default function SpinningSphereBlock(props: SpinningSphereBlockProps) {
             // Create trail spheres for each particle
             const trail: THREE.Mesh[] = [];
             for (let j = 0; j < trailLength; j++) {
-                const trailGeo = new THREE.SphereGeometry(0.04, 12, 12);
+                const trailGeo = new THREE.SphereGeometry(0.022, 12, 12); // smaller trails
                 const trailMat = new THREE.MeshBasicMaterial({ color: '#fff', transparent: true, opacity: 0.5 - j * 0.04 });
                 const trailSphere = new THREE.Mesh(trailGeo, trailMat);
                 scene.add(trailSphere);
@@ -168,7 +141,8 @@ export default function SpinningSphereBlock(props: SpinningSphereBlockProps) {
             for (let i = 0; i < particles.length; i++) {
                 const phi = (i / particles.length) * Math.PI * 2 + frame * 0.7;
                 const theta = Math.abs(Math.sin(frame + i)) * Math.PI;
-                const r = 1.05 + Math.sin(frame * 2 + i) * 0.08;
+                // Increase radius to orbit outside the larger sphere and glow
+                const r = 1.38 + Math.sin(frame * 2 + i) * 0.08;
                 // Current position
                 const x = r * Math.sin(theta) * Math.cos(phi);
                 const y = r * Math.cos(theta);
@@ -181,7 +155,7 @@ export default function SpinningSphereBlock(props: SpinningSphereBlockProps) {
                     const t = frame - j * 0.06;
                     const trailPhi = (i / particles.length) * Math.PI * 2 + t * 0.7;
                     const trailTheta = Math.abs(Math.sin(t + i)) * Math.PI;
-                    const trailR = 1.05 + Math.sin(t * 2 + i) * 0.08;
+                    const trailR = 1.38 + Math.sin(t * 2 + i) * 0.08;
                     prevX = trailR * Math.sin(trailTheta) * Math.cos(trailPhi);
                     prevY = trailR * Math.cos(trailTheta);
                     prevZ = trailR * Math.sin(trailTheta) * Math.sin(trailPhi);
