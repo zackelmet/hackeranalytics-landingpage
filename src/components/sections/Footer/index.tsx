@@ -92,7 +92,12 @@ export default function Footer(props) {
                                 {copyrightText.replace(/© \d{4}/, `© ${new Date().getFullYear()}`)}
                             </Markdown>
                         )}
-                        <div className="footer-badge">Powered by open source</div>
+                        <div className="flex items-center gap-4 mt-2">
+                            <div className="footer-badge px-3 py-1 rounded-full bg-white/10 text-xs font-semibold flex items-center">
+                                Powered by open source
+                            </div>
+                            <img src="/images/logos/MSforStartups.jpeg" alt="Microsoft for Startups" className="h-12 w-auto rounded shadow-lg" />
+                        </div>
                     </div>
                 )}
             </div>

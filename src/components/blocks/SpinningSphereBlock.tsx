@@ -1,253 +1,241 @@
-import * as React from 'react';
+
+
+import { useRef, useEffect } from 'react';
+// Minimal prop type for the block
+type SpinningSphereBlockProps = {
+    elementId?: string;
+    className?: string;
+};
 import * as THREE from 'three';
 import classNames from 'classnames';
 
-interface SpinningSphereBlockProps {
-    elementId?: string;
-    className?: string;
+// Simple Perlin noise implementation
+function fade(t: number) {
+    return t * t * t * (t * (t * 6 - 15) + 10);
+}
+function lerp(a: number, b: number, t: number) {
+    return a + t * (b - a);
+}
+function grad(hash: number, x: number, y: number, z: number) {
+    const h = hash & 15;
+    const u = h < 8 ? x : y;
+    const v = h < 4 ? y : h === 12 || h === 14 ? x : z;
+    return ((h & 1) === 0 ? u : -u) + ((h & 2) === 0 ? v : -v);
+}
+function perlin(x: number, y: number, z: number, p: number[]) {
+    const X = Math.floor(x) & 255;
+    const Y = Math.floor(y) & 255;
+    const Z = Math.floor(z) & 255;
+    x -= Math.floor(x);
+    y -= Math.floor(y);
+    z -= Math.floor(z);
+    const u = fade(x);
+    const v = fade(y);
+    const w = fade(z);
+    const A = p[X] + Y, AA = p[A] + Z, AB = p[A + 1] + Z;
+    const B = p[X + 1] + Y, BA = p[B] + Z, BB = p[B + 1] + Z;
+    return lerp(
+        lerp(
+            lerp(grad(p[AA], x, y, z), grad(p[BA], x - 1, y, z), u),
+            lerp(grad(p[AB], x, y - 1, z), grad(p[BB], x - 1, y - 1, z), u),
+            v
+        ),
+        lerp(
+            lerp(grad(p[AA + 1], x, y, z - 1), grad(p[BA + 1], x - 1, y, z - 1), u),
+            lerp(grad(p[AB + 1], x, y - 1, z - 1), grad(p[BB + 1], x - 1, y - 1, z - 1), u),
+            v
+        ),
+        w
+    );
 }
 
-/**
- * Neon wireframe globe with orbiting pings and pulse trails.
- */
+
 export default function SpinningSphereBlock(props: SpinningSphereBlockProps) {
     const { elementId, className } = props;
-    const containerRef = React.useRef<HTMLDivElement | null>(null);
+    const mountRef = useRef<HTMLDivElement>(null);
 
-    React.useEffect(() => {
-        const container = containerRef.current;
-        if (!container) return;
+    useEffect(() => {
+        const mount = mountRef.current;
+        if (!mount) return;
 
-        const width = container.clientWidth || 420;
-        const height = container.clientHeight || 420;
-
+        // Scene
         const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
-        camera.position.z = 4.5;
+        scene.background = null;
 
-        const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-        renderer.setSize(width, height);
-        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-        renderer.domElement.style.width = '100%';
-        renderer.domElement.style.height = '100%';
-        container.appendChild(renderer.domElement);
+        // Camera
+        const camera = new THREE.PerspectiveCamera(60, mount.clientWidth / mount.clientHeight, 0.1, 1000);
+        camera.position.z = 3.5;
+
+        // Renderer
+        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        renderer.setSize(mount.clientWidth, mount.clientHeight);
+        renderer.setClearColor(0x000000, 0);
+        mount.innerHTML = '';
+        mount.appendChild(renderer.domElement);
+        renderer.domElement.style.background = 'transparent';
+        renderer.domElement.style.borderRadius = '0';
+        renderer.domElement.style.boxShadow = 'none';
+        renderer.domElement.style.border = 'none';
+
+        // Sphere geometry
+        const geometry = new THREE.SphereGeometry(1, 64, 64);
+        // Cyberpunk grid skin texture
+        const skinCanvas = document.createElement('canvas');
+        skinCanvas.width = 512;
+        skinCanvas.height = 512;
+        const skinCtx = skinCanvas.getContext('2d');
+        if (skinCtx) {
+            // Darker base for more contrast
+            skinCtx.fillStyle = '#10131a';
+            skinCtx.fillRect(0, 0, 512, 512);
+            // Draw grid with glow
+            skinCtx.save();
+            skinCtx.shadowColor = '#00fed9';
+            skinCtx.shadowBlur = 12;
+            skinCtx.strokeStyle = '#00fed9';
+            skinCtx.lineWidth = 2.5;
+            for (let i = 0; i < 512; i += 32) {
+                skinCtx.beginPath();
+                skinCtx.moveTo(i, 0);
+                skinCtx.lineTo(i, 512);
+                skinCtx.stroke();
+                skinCtx.beginPath();
+                skinCtx.moveTo(0, i);
+                skinCtx.lineTo(512, i);
+                skinCtx.stroke();
+            }
+            skinCtx.restore();
+            // Neon dots with stronger glow
+            for (let i = 0; i < 30; i++) {
+                skinCtx.save();
+                skinCtx.beginPath();
+                skinCtx.arc(Math.random() * 512, Math.random() * 512, 8, 0, 2 * Math.PI);
+                skinCtx.fillStyle = ['#00fed9', '#ff00ea', '#39ff14', '#fff'][Math.floor(Math.random() * 4)];
+                skinCtx.shadowColor = skinCtx.fillStyle;
+                skinCtx.shadowBlur = 22;
+                skinCtx.globalAlpha = 0.85;
+                skinCtx.fill();
+                skinCtx.restore();
+            }
+        }
+        const skinTexture = new THREE.CanvasTexture(skinCanvas);
+        const material = new THREE.MeshStandardMaterial({
+            map: skinTexture,
+            metalness: 0.7,
+            roughness: 0.3,
+            emissive: new THREE.Color('#00fed9'),
+            emissiveIntensity: 0.35,
+        });
+        const sphere = new THREE.Mesh(geometry, material);
+        scene.add(sphere);
+
+        // Moving particles
+        const particles: THREE.Mesh[] = [];
+        const trails: THREE.Mesh[][] = [];
+        const trailLength = 10;
+        for (let i = 0; i < 16; i++) {
+            const pointGeo = new THREE.SphereGeometry(0.06, 16, 16);
+            const pointMat = new THREE.MeshBasicMaterial({ color: '#fff' });
+            const point = new THREE.Mesh(pointGeo, pointMat);
+            scene.add(point);
+            particles.push(point);
+            // Create trail spheres for each particle
+            const trail: THREE.Mesh[] = [];
+            for (let j = 0; j < trailLength; j++) {
+                const trailGeo = new THREE.SphereGeometry(0.04, 12, 12);
+                const trailMat = new THREE.MeshBasicMaterial({ color: '#fff', transparent: true, opacity: 0.5 - j * 0.04 });
+                const trailSphere = new THREE.Mesh(trailGeo, trailMat);
+                scene.add(trailSphere);
+                trail.push(trailSphere);
+            }
+            trails.push(trail);
+        }
 
         // Lighting
-        const hemiLight = new THREE.HemisphereLight(0x9ad7ff, 0x0a0a23, 0.8);
-        scene.add(hemiLight);
-        const pointLight = new THREE.PointLight(0x00fed9, 1.8, 10, 2);
-        pointLight.position.set(3, 3, 4);
-        scene.add(pointLight);
+        const ambient = new THREE.AmbientLight(0xffffff, 0.7);
+        scene.add(ambient);
+        const spot = new THREE.SpotLight('#00fed9', 1.2, 10, Math.PI / 4, 0.5, 2);
+        spot.position.set(2, 4, 4);
+        scene.add(spot);
 
-        // Globe group
-        const globe = new THREE.Group();
-        scene.add(globe);
-
-        const globeRadius = 1.35;
-
-        // Core wireframe using edges for crisp lines
-        const baseGeo = new THREE.IcosahedronGeometry(globeRadius, 4);
-        const edgeGeo = new THREE.EdgesGeometry(baseGeo);
-        const wireMat = new THREE.LineBasicMaterial({ color: 0x00fed9, transparent: true, opacity: 0.32 });
-        const wireframe = new THREE.LineSegments(edgeGeo, wireMat);
-        globe.add(wireframe);
-
-        // Latitude and longitude guide lines
-        const gridMat = new THREE.LineBasicMaterial({ color: 0x7cf4ff, transparent: true, opacity: 0.18 });
-        const latLines: THREE.LineLoop[] = [];
-        const longLines: THREE.LineLoop[] = [];
-
-        for (let i = -60; i <= 60; i += 30) {
-            const phi = THREE.MathUtils.degToRad(i);
-            const pts: THREE.Vector3[] = [];
-            for (let t = 0; t <= 64; t++) {
-                const theta = (t / 64) * Math.PI * 2;
-                const r = globeRadius;
-                const x = r * Math.cos(phi) * Math.cos(theta);
-                const y = r * Math.sin(phi);
-                const z = r * Math.cos(phi) * Math.sin(theta);
-                pts.push(new THREE.Vector3(x, y, z));
-            }
-            const latGeom = new THREE.BufferGeometry().setFromPoints(pts);
-            const latLoop = new THREE.LineLoop(latGeom, gridMat);
-            globe.add(latLoop);
-            latLines.push(latLoop);
-        }
-
-        for (let i = 0; i < 12; i++) {
-            const theta = (i / 12) * Math.PI * 2;
-            const pts: THREE.Vector3[] = [];
-            for (let t = -64; t <= 64; t++) {
-                const phi = (t / 64) * (Math.PI / 2);
-                const r = globeRadius;
-                const x = r * Math.cos(phi) * Math.cos(theta);
-                const y = r * Math.sin(phi);
-                const z = r * Math.cos(phi) * Math.sin(theta);
-                pts.push(new THREE.Vector3(x, y, z));
-            }
-            const longGeom = new THREE.BufferGeometry().setFromPoints(pts);
-            const longLoop = new THREE.LineLoop(longGeom, gridMat);
-            globe.add(longLoop);
-            longLines.push(longLoop);
-        }
-
-        // Orbiting pings
-        type Orbiter = { mesh: THREE.Mesh; radius: number; speed: number; inc: number; phase: number };
-        const orbiters: Orbiter[] = [];
-        const orbiterGeo = new THREE.SphereGeometry(0.04, 16, 16);
-        for (let i = 0; i < 14; i++) {
-            const mat = new THREE.MeshBasicMaterial({ color: 0x8fffdc, transparent: true, opacity: 0.9, blending: THREE.AdditiveBlending });
-            const mesh = new THREE.Mesh(orbiterGeo, mat);
-            globe.add(mesh);
-            orbiters.push({
-                mesh,
-                radius: globeRadius + 0.05 + Math.random() * 0.12,
-                speed: 0.45 + Math.random() * 0.45,
-                inc: THREE.MathUtils.degToRad(-45 + Math.random() * 90),
-                phase: Math.random() * Math.PI * 2
-            });
-        }
-
-        // Traveling pulses
-        type Pulse = { mesh: THREE.Mesh; start: THREE.Vector3; end: THREE.Vector3; axis: THREE.Vector3; angle: number; progress: number; speed: number };
-        const pulses: Pulse[] = [];
-        const pulseGeo = new THREE.SphereGeometry(0.05, 12, 12);
-        const pulseMat = new THREE.MeshBasicMaterial({ color: 0xffffff, emissive: 0x00fed9, transparent: true, opacity: 0.95, blending: THREE.AdditiveBlending });
-
-        // Ripple rings on pulse impact
-        type Ripple = { mesh: THREE.Mesh; life: number; maxLife: number };
-        const ripples: Ripple[] = [];
-        const ringGeo = new THREE.RingGeometry(0.08, 0.12, 48);
-        const ringMat = new THREE.MeshBasicMaterial({ color: 0x00fed9, side: THREE.DoubleSide, transparent: true, opacity: 0.4, blending: THREE.AdditiveBlending });
-
-        const spawnPulse = () => {
-            const startDir = new THREE.Vector3().randomDirection();
-            const endDir = new THREE.Vector3().randomDirection();
-            const start = startDir.clone().multiplyScalar(globeRadius * 1.01);
-            const end = endDir.clone().multiplyScalar(globeRadius * 1.01);
-            const axis = new THREE.Vector3().crossVectors(start, end).normalize();
-            const angle = start.angleTo(end);
-            if (axis.lengthSq() === 0 || angle === 0) return;
-            const mesh = new THREE.Mesh(pulseGeo, pulseMat.clone());
-            mesh.position.copy(start);
-            globe.add(mesh);
-            pulses.push({ mesh, start, end, axis, angle, progress: 0, speed: 0.5 + Math.random() * 0.6 });
-        };
-
-        const spawnRipple = (position: THREE.Vector3) => {
-            const ring = new THREE.Mesh(ringGeo, ringMat.clone());
-            ring.position.copy(position);
-            ring.lookAt(new THREE.Vector3(0, 0, 0));
-            globe.add(ring);
-            ripples.push({ mesh: ring, life: 0, maxLife: 1.2 });
-        };
-
-        let pulseTimer = 0;
-        const clock = new THREE.Clock();
-
-        let frameId: number;
-        const animate = () => {
-            frameId = requestAnimationFrame(animate);
-            const delta = clock.getDelta();
-            const elapsed = clock.elapsedTime;
-
-            globe.rotation.y += delta * 0.45;
-            globe.rotation.x = Math.sin(elapsed * 0.28) * 0.1;
-
-            // Orbiters update
-            orbiters.forEach(({ mesh, radius, speed, inc, phase }) => {
-                const theta = elapsed * speed + phase;
-                const x = radius * Math.cos(theta) * Math.cos(inc);
-                const y = radius * Math.sin(inc);
-                const z = radius * Math.sin(theta) * Math.cos(inc);
-                mesh.position.set(x, y, z);
-            });
-
-            // Pulses update
-            pulseTimer += delta;
-            if (pulseTimer > 0.45) {
-                spawnPulse();
-                pulseTimer = 0;
-            }
-
-            for (let i = pulses.length - 1; i >= 0; i--) {
-                const p = pulses[i];
-                p.progress += delta * p.speed;
-                const t = Math.min(p.progress, 1);
-                const pos = p.start.clone().applyAxisAngle(p.axis, p.angle * t);
-                p.mesh.position.copy(pos);
-                const mat = p.mesh.material as THREE.MeshBasicMaterial;
-                mat.opacity = 0.55 + 0.45 * (1 - t);
-                if (p.progress >= 1) {
-                    spawnRipple(pos);
-                    globe.remove(p.mesh);
-                    p.mesh.geometry.dispose();
-                    (p.mesh.material as THREE.Material).dispose();
-                    pulses.splice(i, 1);
+        // Animation
+        let frame = 0;
+        function animate() {
+            frame += 0.008; // slow spin
+            sphere.rotation.y += 0.008;
+            sphere.rotation.x = Math.sin(frame / 2) * 0.1;
+            // Animate particles moving around sphere with trail
+            for (let i = 0; i < particles.length; i++) {
+                const phi = (i / particles.length) * Math.PI * 2 + frame * 0.7;
+                const theta = Math.abs(Math.sin(frame + i)) * Math.PI;
+                const r = 1.05 + Math.sin(frame * 2 + i) * 0.08;
+                // Current position
+                const x = r * Math.sin(theta) * Math.cos(phi);
+                const y = r * Math.cos(theta);
+                const z = r * Math.sin(theta) * Math.sin(phi);
+                particles[i].position.set(x, y, z);
+                // Animate trail
+                let prevX = x, prevY = y, prevZ = z;
+                for (let j = 0; j < trails[i].length; j++) {
+                    // Fade trail by stepping back in time
+                    const t = frame - j * 0.06;
+                    const trailPhi = (i / particles.length) * Math.PI * 2 + t * 0.7;
+                    const trailTheta = Math.abs(Math.sin(t + i)) * Math.PI;
+                    const trailR = 1.05 + Math.sin(t * 2 + i) * 0.08;
+                    prevX = trailR * Math.sin(trailTheta) * Math.cos(trailPhi);
+                    prevY = trailR * Math.cos(trailTheta);
+                    prevZ = trailR * Math.sin(trailTheta) * Math.sin(trailPhi);
+                    trails[i][j].position.set(prevX, prevY, prevZ);
                 }
             }
-
-            // Ripple update
-            for (let i = ripples.length - 1; i >= 0; i--) {
-                const r = ripples[i];
-                r.life += delta;
-                const t = r.life / r.maxLife;
-                r.mesh.scale.setScalar(1 + t * 2.4);
-                const mat = r.mesh.material as THREE.MeshBasicMaterial;
-                mat.opacity = Math.max(0, 0.4 * (1 - t));
-                if (r.life >= r.maxLife) {
-                    globe.remove(r.mesh);
-                    r.mesh.geometry.dispose();
-                    (r.mesh.material as THREE.Material).dispose();
-                    ripples.splice(i, 1);
-                }
-            }
-
             renderer.render(scene, camera);
-        };
+            requestAnimationFrame(animate);
+        }
         animate();
 
-        const handleResize = () => {
-            if (!container) return;
-            const w = container.clientWidth || 420;
-            const h = container.clientHeight || 420;
-            camera.aspect = w / h;
+        // Responsive resize
+        function handleResize() {
+            if (!mount) return;
+            const width = mount.clientWidth;
+            const height = mount.clientHeight;
+            renderer.setSize(width, height);
+            camera.aspect = width / height;
             camera.updateProjectionMatrix();
-            renderer.setSize(w, h);
-        };
-
+        }
         window.addEventListener('resize', handleResize);
 
+        // Cleanup
         return () => {
-            cancelAnimationFrame(frameId);
             window.removeEventListener('resize', handleResize);
-            orbiters.forEach(({ mesh }) => {
-                mesh.geometry.dispose();
-                (mesh.material as THREE.Material).dispose();
-            });
-            pulses.forEach((p) => {
-                p.mesh.geometry.dispose();
-                (p.mesh.material as THREE.Material).dispose();
-            });
-            ripples.forEach((r) => {
-                r.mesh.geometry.dispose();
-                (r.mesh.material as THREE.Material).dispose();
-            });
-            latLines.forEach((l) => l.geometry.dispose());
-            longLines.forEach((l) => l.geometry.dispose());
-            edgeGeo.dispose();
-            baseGeo.dispose();
-            wireMat.dispose();
-            gridMat.dispose();
-            orbiterGeo.dispose();
-            pulseGeo.dispose();
-            pulseMat.dispose();
-            ringGeo.dispose();
-            ringMat.dispose();
-            renderer.dispose();
-            container.removeChild(renderer.domElement);
+            mount.removeChild(renderer.domElement);
+            geometry.dispose();
+            material.dispose();
+            particles.forEach((p) => p.geometry.dispose());
         };
     }, []);
 
-    return <div id={elementId} ref={containerRef} className={classNames('w-full', 'aspect-square', 'max-w-xl', 'mx-auto', className)} />;
+    return (
+            <div
+                id={elementId}
+                ref={mountRef}
+                className={classNames(
+                    'flex',
+                    'justify-center',
+                    'items-center',
+                    'relative',
+                    className
+                )}
+                style={{
+                    width: '100%',
+                    maxWidth: '320px',
+                    aspectRatio: '1/1',
+                    background: 'none',
+                    boxShadow: 'none',
+                    overflow: 'visible',
+                    margin: '0 auto',
+                    padding: 0,
+                    border: 'none',
+                }}
+            />
+    );
 }
