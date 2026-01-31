@@ -156,7 +156,7 @@ sections:
       - title: Zero Installation
         description: Fully hosted service with nothing to install or maintain. Launch scans whenever you need, from anywhere.
       - title: Continuous Vulnerability Management
-        description: Schedule automated OpenVAS and Nmap scans for ongoing vulnerability detection and firewall monitoring.
+        description: OpenVAS and Nmap scans for ongoing vulnerability detection and firewall monitoring.
       - title: Intuitive Interface
         description: Launch comprehensive vulnerability scans with a simple form. Select your options and receive detailed results.
     screenshots:
