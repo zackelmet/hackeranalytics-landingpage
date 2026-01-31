@@ -56,7 +56,7 @@ sections:
         img: /images/logos/x-twitter.png
       - name: G2
         href: https://www.g2.com/products/hosted-security-scanners/reviews
-        img: /images/logos/g2.png
+        img: /images/logos/g2.jpeg
 
   - type: ValueGridSection
     title:
