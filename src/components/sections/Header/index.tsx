@@ -21,12 +21,14 @@ export default function Header(props) {
                 'sb-component',
                 'sb-component-header',
                 colors,
-                'relative',
+                'sticky',
+                'top-0',
                 'shadow-header',
                 styles?.self?.margin ? mapStyles({ padding: styles?.self?.margin }) : undefined,
                 styles?.self?.padding ? mapStyles({ padding: styles?.self?.padding }) : 'py-0 px-4',
                 'z-50'
             )}
+            style={{ WebkitBackdropFilter: 'blur(8px)', backdropFilter: 'blur(8px)' }}
             {...(enableAnnotations && { 'data-sb-object-id': props?.__metadata?.id })}
         >
             <div className="mx-auto max-w-7xl">

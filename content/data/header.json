@@ -15,6 +15,25 @@
     "primaryLinks": [
         {
             "type": "SubNav",
+            "label": "Services",
+            "altText": "Dropdown",
+            "links": [
+                {
+                    "type": "Link",
+                    "label": "Vulnerability Assessment",
+                    "altText": "Vulnerability Assessment",
+                    "url": "/vulnerability-assessment",
+                    "showIcon": false,
+                    "icon": "arrowRight",
+                    "iconPosition": "right",
+                    "style": "secondary",
+                    "elementId": ""
+                }
+            ],
+            "labelStyle": "secondary"
+        },
+        {
+            "type": "SubNav",
             "label": "Scanners",
             "altText": "Dropdown",
             "links": [

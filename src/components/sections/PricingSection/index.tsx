@@ -56,16 +56,22 @@ export default function PricingSection(props) {
                                 className={classNames('flex', 'flex-wrap', 'items-stretch', mapStyles({ justifyContent: styles?.self?.justifyContent ?? 'flex-start' }), 'gap-y-10', '-mx-5')}
                                 {...(enableAnnotations && { 'data-sb-field-path': '.plans' })}
                             >
-                                {plans.map((plan, index) => (
-                                    <div key={index} className="px-5 basis-full max-w-full sm:basis-5/6 sm:max-w-[83.33333%] md:basis-2/3 md:max-w-[66.66667%] lg:basis-1/4 lg:max-w-[25%]">
-                                        <PricingPlan
-                                            {...plan}
-                                            stepIndex={index + 1}
-                                            hasSectionTitle={!!title?.text}
-                                            {...(enableAnnotations && { 'data-sb-field-path': `.${index}` })}
-                                        />
-                                    </div>
-                                ))}
+                                {plans.map((plan, index) => {
+                                    // If there are exactly 2 plans, make each 50% width on large screens
+                                    const cardClass = plans.length === 2
+                                        ? 'px-5 basis-full max-w-full sm:basis-5/6 sm:max-w-[83.33333%] md:basis-2/3 md:max-w-[66.66667%] lg:basis-1/2 lg:max-w-[50%]'
+                                        : 'px-5 basis-full max-w-full sm:basis-5/6 sm:max-w-[83.33333%] md:basis-2/3 md:max-w-[66.66667%] lg:basis-1/4 lg:max-w-[25%]';
+                                    return (
+                                        <div key={index} className={cardClass}>
+                                            <PricingPlan
+                                                {...plan}
+                                                stepIndex={index + 1}
+                                                hasSectionTitle={!!title?.text}
+                                                {...(enableAnnotations && { 'data-sb-field-path': `.${index}` })}
+                                            />
+                                        </div>
+                                    );
+                                })}
                             </div>
                         </div>
                     </div>
