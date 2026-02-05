@@ -224,11 +224,14 @@ function MobileMenu(props) {
                 <span className="sr-only">Open Menu</span>
                 <MenuIcon className="w-6 h-6 fill-current" />
             </button>
-            <div className={classNames(colors, 'fixed', 'inset-0', styles?.self?.padding ?? 'p-4', 'overflow-y-auto', 'z-10', isMenuOpen ? 'block' : 'hidden')}>
-                <div className="flex flex-col min-h-full">
+            <div 
+                className={classNames('sb-mobile-menu', 'fixed', 'inset-0', 'z-[60]', isMenuOpen ? 'block' : 'hidden')} 
+                style={{ background: '#0a0a23', padding: '1rem' }}
+            >
+                <div className="flex flex-col text-white">
                     <div className="flex items-center justify-between mb-10">
                         {(title || logo?.url) && <SiteLogoLink title={title} logo={logo} enableAnnotations={enableAnnotations} />}
-                        <button aria-label="Close Menu" title="Close Menu" className="p-2 -mr-1 focus:outline-none" onClick={closeMobileMenu}>
+                        <button aria-label="Close Menu" title="Close Menu" className="p-2 -mr-1 focus:outline-none text-white" onClick={closeMobileMenu}>
                             <CloseIcon className="w-6 h-6 fill-current" />
                         </button>
                     </div>

@@ -67,11 +67,11 @@ export default function BasicSection(props) {
                 {hasTextContent && (
                     <div
                         className={classNames('w-full', {
-                            'lg:w-1/2': hasSeparateMedia && hasXDirection,
+                            'lg:w-1/2': hasSeparateMedia && hasXDirection && !titleText.includes('pentesting') && !titleText.includes('penetration'),
                             // Make these follow-up CTI sections wider on desktop so their content matches the hero's width
                             // use a larger centered max width so the content aligns with the hero container
-                            'mx-auto lg:max-w-6xl': !hasSeparateMedia && (titleText.includes('turn cti') || titleText.includes('compliance alignment') || titleText.includes('request a quote')),
-                            'max-w-sectionBody': !(hasSeparateMedia && hasXDirection) && !(titleText.includes('turn cti') || titleText.includes('compliance alignment') || titleText.includes('request a quote'))
+                            'mx-auto lg:max-w-6xl': !hasSeparateMedia && (titleText.includes('turn cti') || titleText.includes('compliance alignment') || titleText.includes('request a quote') || titleText.includes('manual penetration') || titleText.includes('what is manual') || titleText.includes('why msp pentesting') || titleText.includes('pentesting') || titleText.includes('penetration')),
+                            'max-w-sectionBody': !(hasSeparateMedia && hasXDirection) && !(titleText.includes('turn cti') || titleText.includes('compliance alignment') || titleText.includes('request a quote') || titleText.includes('manual penetration') || titleText.includes('what is manual') || titleText.includes('why msp pentesting') || titleText.includes('pentesting') || titleText.includes('penetration'))
                         })}
                     >
                         <div className={classNames(textWrapperDecoration)}>
@@ -99,6 +99,8 @@ export default function BasicSection(props) {
                                 const normalized = titleText.toLowerCase();
                                 const isComplianceAlignment = normalized.includes('compliance alignment') || normalized.includes('soc') || normalized.includes('pci') || normalized.includes('nist');
                                 const isComplianceEvidence = normalized.includes('why it matters') || normalized.includes('turn cti') || normalized.includes('compliance evidence') || (normalized.includes('cti') && normalized.includes('compliance'));
+                                const isPentestingServices = normalized.includes('what is manual') || (normalized.includes('pentesting') && text.includes('Our Pentesting Services Include'));
+                                const isPentestingBenefits = normalized.includes('why msp pentesting') || (normalized.includes('pentesting') && text.includes('Key Benefits'));
 
                                 if (isComplianceEvidence) {
                                     return (
@@ -177,9 +179,104 @@ export default function BasicSection(props) {
                                     );
                                 }
 
+                                if (isPentestingServices) {
+                                    // Parse the services from the text
+                                    const serviceMatches = text.match(/<svg[^>]*>.*?<\/svg>\s*\*\*([^*]+)\*\*\s*-\s*([^\n]+)/g);
+                                    const intro = text.split('### Our Pentesting Services Include:')[0].trim();
+                                    
+                                    return (
+                                        <div>
+                                            <Markdown
+                                                options={{ forceBlock: true, forceWrapper: true }}
+                                                className={classNames('sb-markdown', 'text-lg', 'mb-8', styles?.text ? mapStyles(styles?.text) : undefined)}
+                                            >
+                                                {intro}
+                                            </Markdown>
+                                            <h3 className="text-2xl font-semibold mb-6 text-center">Our Pentesting Services Include:</h3>
+                                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                                {serviceMatches?.map((item, index) => {
+                                                    const svgMatch = item.match(/<svg[^>]*>.*?<\/svg>/);
+                                                    const titleMatch = item.match(/\*\*([^*]+)\*\*/);
+                                                    const descMatch = item.match(/\*\*[^*]+\*\*\s*-\s*([^\n]+)/);
+                                                    
+                                                    return (
+                                                        <div key={index} className="bg-white/5 p-6 rounded-xl border border-white/10 hover:bg-white/10 transition-all duration-300">
+                                                            <div className="flex items-start gap-4">
+                                                                {svgMatch && (
+                                                                    <div className="flex-shrink-0" dangerouslySetInnerHTML={{ __html: svgMatch[0].replace('w-5 h-5', 'w-8 h-8') }} />
+                                                                )}
+                                                                <div>
+                                                                    <h4 className="text-lg font-semibold mb-2">{titleMatch?.[1]}</h4>
+                                                                    <p className="text-sm text-gray-300">{descMatch?.[1]}</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    );
+                                                })}
+                                            </div>
+                                        </div>
+                                    );
+                                }
+
+                                if (isPentestingBenefits) {
+                                    // Parse the benefits from the text
+                                    const benefitMatches = text.match(/<svg[^>]*>.*?<\/svg>\s*\*\*([^*]+)\*\*\s*-\s*([^\n]+)/g);
+                                    const intro = text.split('### Key Benefits of Our Partnership:')[0].trim();
+                                    
+                                    return (
+                                        <div>
+                                            <Markdown
+                                                options={{ forceBlock: true, forceWrapper: true }}
+                                                className={classNames('sb-markdown', 'text-lg', 'mb-8', styles?.text ? mapStyles(styles?.text) : undefined)}
+                                            >
+                                                {intro}
+                                            </Markdown>
+                                            <h3 className="text-2xl font-semibold mb-6 text-center">Key Benefits of Our Partnership:</h3>
+                                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                                {benefitMatches?.map((item, index) => {
+                                                    const svgMatch = item.match(/<svg[^>]*>.*?<\/svg>/);
+                                                    const titleMatch = item.match(/\*\*([^*]+)\*\*/);
+                                                    const descMatch = item.match(/\*\*[^*]+\*\*\s*-\s*([^\n]+)/);
+                                                    
+                                                    return (
+                                                        <div key={index} className="bg-white/5 p-6 rounded-xl border border-white/10 hover:bg-white/10 transition-all duration-300">
+                                                            <div className="flex items-start gap-4">
+                                                                {svgMatch && (
+                                                                    <div className="flex-shrink-0" dangerouslySetInnerHTML={{ __html: svgMatch[0].replace('w-5 h-5', 'w-8 h-8') }} />
+                                                                )}
+                                                                <div>
+                                                                    <h4 className="text-lg font-semibold mb-2">{titleMatch?.[1]}</h4>
+                                                                    <p className="text-sm text-gray-300">{descMatch?.[1]}</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    );
+                                                })}
+                                            </div>
+                                        </div>
+                                    );
+                                }
+
                                 return (
                                     <Markdown
-                                        options={{ forceBlock: true, forceWrapper: true }}
+                                        options={{ 
+                                            forceBlock: true, 
+                                            forceWrapper: true,
+                                            overrides: {
+                                                a: {
+                                                    component: ({ href, target, children, ...props }) => (
+                                                        <a 
+                                                            href={href} 
+                                                            target={target || '_blank'} 
+                                                            rel={target === '_blank' ? 'noopener noreferrer' : undefined}
+                                                            {...props}
+                                                        >
+                                                            {children}
+                                                        </a>
+                                                    )
+                                                }
+                                            }
+                                        }}
                                         className={classNames('sb-markdown', 'sm:text-lg', styles?.text ? mapStyles(styles?.text) : undefined, {
                                             'mt-6': badge?.label || title?.text || subtitle
                                         })}
@@ -201,6 +298,12 @@ export default function BasicSection(props) {
                             {/* Render inline media (centered) between text and actions when requested in content */}
                             {mediaInline && (
                                 <div className={classNames('flex', 'justify-center', 'items-center', 'my-4')}>
+                                    <Media media={media} hasAnnotations={enableAnnotations} />
+                                </div>
+                            )}
+                            {/* Render non-inline media before actions if it's an ImageBlock */}
+                            {!mediaInline && hasMedia && media?.__metadata?.modelName === 'ImageBlock' && (
+                                <div className={classNames('flex', 'justify-center', 'items-center', 'mt-6', 'mb-4')}>
                                     <Media media={media} hasAnnotations={enableAnnotations} />
                                 </div>
                             )}
@@ -231,7 +334,7 @@ export default function BasicSection(props) {
                         </div>
                     </div>
                 )}
-                {hasSeparateMedia && (
+                {hasSeparateMedia && media?.__metadata?.modelName !== 'ImageBlock' && (
                     <div
                         className={classNames('w-full', 'flex', mapStyles({ justifyContent: styles?.self?.justifyContent ?? 'flex-start' }), {
                             'max-w-sectionBody': media.__metadata?.modelName === 'FormBlock',

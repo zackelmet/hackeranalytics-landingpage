@@ -28,8 +28,14 @@ export default function FormBlock(props) {
                           borderColor: styles?.self?.borderColor ?? 'border-primary'
                       })
                     : undefined,
-                styles?.self?.borderRadius ? mapStyles({ borderRadius: styles?.self?.borderRadius }) : undefined
+                styles?.self?.borderRadius ? mapStyles({ borderRadius: styles?.self?.borderRadius }) : undefined,
+                {
+                    'mx-auto': styles?.self?.marginLeft === 'auto' && styles?.self?.marginRight === 'auto'
+                }
             )}
+            style={{
+                maxWidth: styles?.self?.maxWidth ? `${styles.self.maxWidth}px` : undefined
+            }}
             name={elementId}
             id={elementId}
             method="POST"
