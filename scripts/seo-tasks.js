@@ -1,9 +1,9 @@
 /**
  * SEO Tasks Generator for Hacker Analytics
- * 
+ *
  * Reads seo-audit.json and generates seo-tasks.md -
  * a structured, prioritized task list for OpenClaw to act on.
- * 
+ *
  * Usage:
  *   npm run seo:tasks
  */
@@ -29,78 +29,91 @@ const TASK_TEMPLATES = {
     missing_title: {
         priority: 'P0',
         action: 'Add a <title> tag',
-        instruction: (page) => `Add a concise, keyword-rich <title> to the frontmatter \`metaTitle\` field of \`${page.file}\`. Target 50-60 characters. The page is about: "${page.title || page.slug}".`,
+        instruction: (page) =>
+            `Add a concise, keyword-rich <title> to the frontmatter \`metaTitle\` field of \`${page.file}\`. Target 50-60 characters. The page is about: "${page.title || page.slug}".`
     },
     missing_meta_description: {
         priority: 'P0',
         action: 'Add meta description',
-        instruction: (page) => `Add a \`metaDescription\` to \`${page.file}\`. Write 140-160 characters summarizing the page for search results. Include the primary keyword naturally. Page topic: "${page.title || page.slug}".`,
+        instruction: (page) =>
+            `Add a \`metaDescription\` to \`${page.file}\`. Write 140-160 characters summarizing the page for search results. Include the primary keyword naturally. Page topic: "${page.title || page.slug}".`
     },
     thin_content: {
         priority: 'P1',
         action: 'Expand content',
-        instruction: (page) => `\`${page.file}\` has only ${page.wordCount} words. Expand to 600+ words. Add sections covering: use cases, how it works, FAQs, and relevant cybersecurity context. Maintain the existing tone and keyword focus.`,
+        instruction: (page) =>
+            `\`${page.file}\` has only ${page.wordCount} words. Expand to 600+ words. Add sections covering: use cases, how it works, FAQs, and relevant cybersecurity context. Maintain the existing tone and keyword focus.`
     },
     title_too_short: {
         priority: 'P1',
         action: 'Lengthen title',
-        instruction: (page) => `The title in \`${page.file}\` is too short. Update \`metaTitle\` to 50-60 characters. Current title: "${page.metaTitle || page.title}". Add a keyword modifier or brand suffix like "| Hacker Analytics".`,
+        instruction: (page) =>
+            `The title in \`${page.file}\` is too short. Update \`metaTitle\` to 50-60 characters. Current title: "${page.metaTitle || page.title}". Add a keyword modifier or brand suffix like "| Hacker Analytics".`
     },
     title_too_long: {
         priority: 'P1',
         action: 'Shorten title',
-        instruction: (page) => `The title in \`${page.file}\` exceeds 60 characters and will be truncated in SERPs. Update \`metaTitle\` to 50-60 characters. Current: "${page.metaTitle || page.title}".`,
+        instruction: (page) =>
+            `The title in \`${page.file}\` exceeds 60 characters and will be truncated in SERPs. Update \`metaTitle\` to 50-60 characters. Current: "${page.metaTitle || page.title}".`
     },
     meta_description_too_short: {
         priority: 'P1',
         action: 'Lengthen meta description',
-        instruction: (page) => `Meta description in \`${page.file}\` is too short. Expand \`metaDescription\` to 140-160 characters. Include a clear value proposition and call to action. Current: "${page.metaDescription}".`,
+        instruction: (page) =>
+            `Meta description in \`${page.file}\` is too short. Expand \`metaDescription\` to 140-160 characters. Include a clear value proposition and call to action. Current: "${page.metaDescription}".`
     },
     meta_description_too_long: {
         priority: 'P1',
         action: 'Shorten meta description',
-        instruction: (page) => `Meta description in \`${page.file}\` exceeds 160 characters and will be truncated. Trim \`metaDescription\` to under 160 characters while preserving the key message.`,
+        instruction: (page) =>
+            `Meta description in \`${page.file}\` exceeds 160 characters and will be truncated. Trim \`metaDescription\` to under 160 characters while preserving the key message.`
     },
     missing_h1: {
         priority: 'P1',
         action: 'Add H1 heading',
-        instruction: (page) => `\`${page.file}\` has no H1. Ensure the first heading in the content is an H1 (single # in markdown) that matches or closely relates to the page title: "${page.title}".`,
+        instruction: (page) =>
+            `\`${page.file}\` has no H1. Ensure the first heading in the content is an H1 (single # in markdown) that matches or closely relates to the page title: "${page.title}".`
     },
     images_missing_alt: {
         priority: 'P2',
         action: 'Add image alt text',
-        instruction: (page) => `${page.htmlMeta?.imgsMissingAlt || 'Some'} image(s) in \`${page.file}\` are missing alt text. Add descriptive alt attributes to all images for accessibility and image SEO.`,
+        instruction: (page) =>
+            `${page.htmlMeta?.imgsMissingAlt || 'Some'} image(s) in \`${page.file}\` are missing alt text. Add descriptive alt attributes to all images for accessibility and image SEO.`
     },
     no_h2_headings: {
         priority: 'P2',
         action: 'Add H2 section headings',
-        instruction: (page) => `\`${page.file}\` has no H2 headings. Break content into logical sections with H2 headings (## in markdown) to improve readability and keyword coverage.`,
+        instruction: (page) =>
+            `\`${page.file}\` has no H2 headings. Break content into logical sections with H2 headings (## in markdown) to improve readability and keyword coverage.`
     },
     missing_og_title: {
         priority: 'P2',
         action: 'Add og:title',
-        instruction: (page) => `Add \`seo.ogTitle\` or \`socialImage\` metadata to \`${page.file}\` for better social sharing appearance.`,
+        instruction: (page) => `Add \`seo.ogTitle\` or \`socialImage\` metadata to \`${page.file}\` for better social sharing appearance.`
     },
     missing_og_image: {
         priority: 'P2',
         action: 'Add og:image',
-        instruction: (page) => `\`${page.file}\` has no og:image. Set \`socialImage\` in frontmatter to a relevant image path (e.g. \`/images/Hacker Analytics.png\`) for better social sharing previews.`,
+        instruction: (page) =>
+            `\`${page.file}\` has no og:image. Set \`socialImage\` in frontmatter to a relevant image path (e.g. \`/images/Hacker Analytics.png\`) for better social sharing previews.`
     },
     low_lighthouse_seo: {
         priority: 'P1',
         action: 'Fix Lighthouse SEO issues',
-        instruction: (page) => `Lighthouse SEO score for \`${page.file}\` is below 80. Run \`npx lighthouse ${page.url}\` locally to see specific failing audits and fix them.`,
+        instruction: (page) =>
+            `Lighthouse SEO score for \`${page.file}\` is below 80. Run \`npx lighthouse ${page.url}\` locally to see specific failing audits and fix them.`
     },
     low_lighthouse_performance: {
         priority: 'P1',
         action: 'Fix performance issues',
-        instruction: (page) => `Lighthouse Performance score for \`${page.file}\` is low. Check for large images, render-blocking scripts, or missing caching headers.`,
+        instruction: (page) =>
+            `Lighthouse Performance score for \`${page.file}\` is low. Check for large images, render-blocking scripts, or missing caching headers.`
     },
     broken_page: {
         priority: 'P0',
         action: 'Fix broken page',
-        instruction: (page) => `\`${page.file}\` returned a non-200 HTTP status. Investigate the slug, routing, and page content immediately.`,
-    },
+        instruction: (page) => `\`${page.file}\` returned a non-200 HTTP status. Investigate the slug, routing, and page content immediately.`
+    }
 };
 
 // ---------------------------------------------------------------------------
@@ -124,7 +137,7 @@ function buildTasks() {
                 instruction: template.instruction(page),
                 issue: issue.message,
                 pageScore: page.score,
-                pageType: page.type,
+                pageType: page.type
             });
         }
     }
@@ -144,9 +157,7 @@ function buildTasks() {
 // Generate blog post ideas for thin/missing content
 // ---------------------------------------------------------------------------
 function generateBlogIdeas() {
-    const thinPages = pages.filter(p =>
-        p.type === 'blog' && p.wordCount < 300
-    );
+    const thinPages = pages.filter((p) => p.type === 'blog' && p.wordCount < 300);
 
     if (thinPages.length === 0) return '';
 
@@ -177,9 +188,9 @@ function generateBlogIdeas() {
 // ---------------------------------------------------------------------------
 function renderMarkdown(tasks) {
     const now = new Date().toISOString();
-    const p0 = tasks.filter(t => t.priority === 'P0');
-    const p1 = tasks.filter(t => t.priority === 'P1');
-    const p2 = tasks.filter(t => t.priority === 'P2');
+    const p0 = tasks.filter((t) => t.priority === 'P0');
+    const p1 = tasks.filter((t) => t.priority === 'P1');
+    const p2 = tasks.filter((t) => t.priority === 'P2');
 
     let md = `# Hacker Analytics — SEO Task List\n\n`;
     md += `> Generated: ${now}  \n`;
@@ -244,6 +255,6 @@ fs.writeFileSync(TASKS_FILE, markdown);
 
 console.log(`\n✅ SEO task list generated: ${TASKS_FILE}`);
 console.log(`   Total tasks: ${tasks.length}`);
-console.log(`   P0 critical: ${tasks.filter(t => t.priority === 'P0').length}`);
-console.log(`   P1 high:     ${tasks.filter(t => t.priority === 'P1').length}`);
-console.log(`   P2 medium:   ${tasks.filter(t => t.priority === 'P2').length}\n`);
+console.log(`   P0 critical: ${tasks.filter((t) => t.priority === 'P0').length}`);
+console.log(`   P1 high:     ${tasks.filter((t) => t.priority === 'P1').length}`);
+console.log(`   P2 medium:   ${tasks.filter((t) => t.priority === 'P2').length}\n`);

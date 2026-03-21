@@ -1,9 +1,9 @@
 /**
  * SEO Audit Script for Hacker Analytics
- * 
+ *
  * Crawls all pages and blog posts, runs Lighthouse on each,
  * and outputs a structured seo-audit.json for OpenClaw to act on.
- * 
+ *
  * Usage:
  *   npm run seo:audit
  *   npm run seo:audit -- --url https://hackeranalytics.com  (production)
@@ -31,7 +31,7 @@ const THRESHOLDS = {
     metaDescMinLen: 120,
     metaDescMaxLen: 160,
     minWordCount: 300,
-    lighthouseMinScore: 0.8, // 80
+    lighthouseMinScore: 0.8 // 80
 };
 
 // ---------------------------------------------------------------------------
@@ -43,9 +43,13 @@ function readFrontMatter(filePath) {
         const match = raw.match(/^---\n([\s\S]*?)\n---/);
         if (!match) return { frontmatter: {}, body: raw };
         const fm = {};
-        match[1].split('\n').forEach(line => {
+        match[1].split('\n').forEach((line) => {
             const [key, ...rest] = line.split(':');
-            if (key && rest.length) fm[key.trim()] = rest.join(':').trim().replace(/^['"]|['"]$/g, '');
+            if (key && rest.length)
+                fm[key.trim()] = rest
+                    .join(':')
+                    .trim()
+                    .replace(/^['"]|['"]$/g, '');
         });
         const body = raw.slice(match[0].length).trim();
         return { frontmatter: fm, body };
@@ -55,7 +59,11 @@ function readFrontMatter(filePath) {
 }
 
 function countWords(text) {
-    return text.replace(/```[\s\S]*?```/g, '').replace(/[#*`_[\]()]/g, '').split(/\s+/).filter(Boolean).length;
+    return text
+        .replace(/```[\s\S]*?```/g, '')
+        .replace(/[#*`_[\]()]/g, '')
+        .split(/\s+/)
+        .filter(Boolean).length;
 }
 
 function slugToUrl(slug) {
@@ -67,19 +75,23 @@ function slugToUrl(slug) {
 function fetchUrl(url) {
     return new Promise((resolve, reject) => {
         const client = url.startsWith('https') ? https : http;
-        client.get(url, { timeout: 15000 }, res => {
-            let data = '';
-            res.on('data', chunk => (data += chunk));
-            res.on('end', () => resolve({ status: res.statusCode, body: data }));
-        }).on('error', reject).on('timeout', () => reject(new Error('timeout')));
+        client
+            .get(url, { timeout: 15000 }, (res) => {
+                let data = '';
+                res.on('data', (chunk) => (data += chunk));
+                res.on('end', () => resolve({ status: res.statusCode, body: data }));
+            })
+            .on('error', reject)
+            .on('timeout', () => reject(new Error('timeout')));
     });
 }
 
 // Very lightweight HTML meta extractor (no cheerio dependency)
 function extractMeta(html) {
     const titleMatch = html.match(/<title[^>]*>([^<]*)<\/title>/i);
-    const descMatch = html.match(/<meta[^>]+name=["']description["'][^>]+content=["']([^"']*)["']/i)
-        || html.match(/<meta[^>]+content=["']([^"']*)["'][^>]+name=["']description["']/i);
+    const descMatch =
+        html.match(/<meta[^>]+name=["']description["'][^>]+content=["']([^"']*)["']/i) ||
+        html.match(/<meta[^>]+content=["']([^"']*)["'][^>]+name=["']description["']/i);
     const h1Match = html.match(/<h1[^>]*>([^<]*)<\/h1>/i);
     const canonicalMatch = html.match(/<link[^>]+rel=["']canonical["'][^>]+href=["']([^"']*)["']/i);
     const ogTitleMatch = html.match(/<meta[^>]+property=["']og:title["'][^>]+content=["']([^"']*)["']/i);
@@ -88,7 +100,7 @@ function extractMeta(html) {
 
     // Count all img tags and those missing alt
     const imgTags = html.match(/<img[^>]*>/gi) || [];
-    const imgsMissingAlt = imgTags.filter(tag => !tag.includes('alt=') || tag.includes('alt=""') || tag.includes("alt=''")).length;
+    const imgsMissingAlt = imgTags.filter((tag) => !tag.includes('alt=') || tag.includes('alt=""') || tag.includes("alt=''")).length;
 
     // Count h2, h3 tags
     const h2Count = (html.match(/<h2[^>]*>/gi) || []).length;
@@ -105,7 +117,7 @@ function extractMeta(html) {
         imgCount: imgTags.length,
         imgsMissingAlt,
         h2Count,
-        h3Count,
+        h3Count
     };
 }
 
@@ -128,7 +140,7 @@ async function runLighthouse(url) {
                 largestContentfulPaint: report.audits['largest-contentful-paint']?.displayValue ?? null,
                 totalBlockingTime: report.audits['total-blocking-time']?.displayValue ?? null,
                 cumulativeLayoutShift: report.audits['cumulative-layout-shift']?.displayValue ?? null,
-                speedIndex: report.audits['speed-index']?.displayValue ?? null,
+                speedIndex: report.audits['speed-index']?.displayValue ?? null
             }
         };
     } catch {
@@ -144,7 +156,7 @@ function collectPages() {
 
     // Main pages
     const pagesDir = path.join(CONTENT_DIR, 'pages');
-    const mdFiles = fs.readdirSync(pagesDir).filter(f => f.endsWith('.md') && !fs.statSync(path.join(pagesDir, f)).isDirectory());
+    const mdFiles = fs.readdirSync(pagesDir).filter((f) => f.endsWith('.md') && !fs.statSync(path.join(pagesDir, f)).isDirectory());
     for (const file of mdFiles) {
         const filePath = path.join(pagesDir, file);
         const { frontmatter, body } = readFrontMatter(filePath);
@@ -158,14 +170,14 @@ function collectPages() {
             metaTitle: frontmatter.metaTitle || frontmatter.seo?.metaTitle || null,
             metaDescription: frontmatter.metaDescription || frontmatter.seo?.metaDescription || null,
             wordCount: countWords(body),
-            frontmatter,
+            frontmatter
         });
     }
 
     // Blog posts
     const blogDir = path.join(CONTENT_DIR, 'pages', 'blog');
     if (fs.existsSync(blogDir)) {
-        const blogFiles = fs.readdirSync(blogDir).filter(f => f.endsWith('.md'));
+        const blogFiles = fs.readdirSync(blogDir).filter((f) => f.endsWith('.md'));
         for (const file of blogFiles) {
             if (file === 'index.md') continue;
             const filePath = path.join(blogDir, file);
@@ -182,7 +194,7 @@ function collectPages() {
                 wordCount: countWords(body),
                 tags: frontmatter.tags || [],
                 date: frontmatter.date || null,
-                frontmatter,
+                frontmatter
             });
         }
     }
@@ -214,8 +226,18 @@ async function auditPage(page) {
             if (!title) {
                 issues.push({ severity: 'critical', type: 'missing_title', message: 'No <title> tag found' });
             } else {
-                if (title.length < THRESHOLDS.titleMinLen) issues.push({ severity: 'warning', type: 'title_too_short', message: `Title is ${title.length} chars (min ${THRESHOLDS.titleMinLen}): "${title}"` });
-                if (title.length > THRESHOLDS.titleMaxLen) issues.push({ severity: 'warning', type: 'title_too_long', message: `Title is ${title.length} chars (max ${THRESHOLDS.titleMaxLen}): "${title}"` });
+                if (title.length < THRESHOLDS.titleMinLen)
+                    issues.push({
+                        severity: 'warning',
+                        type: 'title_too_short',
+                        message: `Title is ${title.length} chars (min ${THRESHOLDS.titleMinLen}): "${title}"`
+                    });
+                if (title.length > THRESHOLDS.titleMaxLen)
+                    issues.push({
+                        severity: 'warning',
+                        type: 'title_too_long',
+                        message: `Title is ${title.length} chars (max ${THRESHOLDS.titleMaxLen}): "${title}"`
+                    });
             }
 
             // Meta description checks
@@ -223,8 +245,18 @@ async function auditPage(page) {
             if (!desc) {
                 issues.push({ severity: 'critical', type: 'missing_meta_description', message: 'No meta description found' });
             } else {
-                if (desc.length < THRESHOLDS.metaDescMinLen) issues.push({ severity: 'warning', type: 'meta_description_too_short', message: `Meta description is ${desc.length} chars (min ${THRESHOLDS.metaDescMinLen}): "${desc}"` });
-                if (desc.length > THRESHOLDS.metaDescMaxLen) issues.push({ severity: 'warning', type: 'meta_description_too_long', message: `Meta description is ${desc.length} chars (max ${THRESHOLDS.metaDescMaxLen})` });
+                if (desc.length < THRESHOLDS.metaDescMinLen)
+                    issues.push({
+                        severity: 'warning',
+                        type: 'meta_description_too_short',
+                        message: `Meta description is ${desc.length} chars (min ${THRESHOLDS.metaDescMinLen}): "${desc}"`
+                    });
+                if (desc.length > THRESHOLDS.metaDescMaxLen)
+                    issues.push({
+                        severity: 'warning',
+                        type: 'meta_description_too_long',
+                        message: `Meta description is ${desc.length} chars (max ${THRESHOLDS.metaDescMaxLen})`
+                    });
             }
 
             // H1 check
@@ -269,18 +301,26 @@ async function auditPage(page) {
                 issues.push({ severity: 'warning', type: 'low_lighthouse_seo', message: `Lighthouse SEO score: ${Math.round(lighthouse.seo * 100)}/100` });
             }
             if (lighthouse.performance !== null && lighthouse.performance < THRESHOLDS.lighthouseMinScore) {
-                issues.push({ severity: 'warning', type: 'low_lighthouse_performance', message: `Lighthouse Performance score: ${Math.round(lighthouse.performance * 100)}/100` });
+                issues.push({
+                    severity: 'warning',
+                    type: 'low_lighthouse_performance',
+                    message: `Lighthouse Performance score: ${Math.round(lighthouse.performance * 100)}/100`
+                });
             }
             if (lighthouse.accessibility !== null && lighthouse.accessibility < THRESHOLDS.lighthouseMinScore) {
-                issues.push({ severity: 'warning', type: 'low_lighthouse_accessibility', message: `Lighthouse Accessibility score: ${Math.round(lighthouse.accessibility * 100)}/100` });
+                issues.push({
+                    severity: 'warning',
+                    type: 'low_lighthouse_accessibility',
+                    message: `Lighthouse Accessibility score: ${Math.round(lighthouse.accessibility * 100)}/100`
+                });
             }
         }
     }
 
     // Score: 0-100 based on issues
-    const criticalCount = issues.filter(i => i.severity === 'critical').length;
-    const warningCount = issues.filter(i => i.severity === 'warning').length;
-    const score = Math.max(0, 100 - (criticalCount * 25) - (warningCount * 10));
+    const criticalCount = issues.filter((i) => i.severity === 'critical').length;
+    const warningCount = issues.filter((i) => i.severity === 'warning').length;
+    const score = Math.max(0, 100 - criticalCount * 25 - warningCount * 10);
 
     return {
         ...page,
@@ -289,7 +329,7 @@ async function auditPage(page) {
         lighthouse,
         issues,
         score,
-        auditedAt: new Date().toISOString(),
+        auditedAt: new Date().toISOString()
     };
 }
 
@@ -319,10 +359,10 @@ async function main() {
     }
 
     // Summary stats
-    const critical = results.flatMap(r => r.issues).filter(i => i.severity === 'critical').length;
-    const warnings = results.flatMap(r => r.issues).filter(i => i.severity === 'warning').length;
+    const critical = results.flatMap((r) => r.issues).filter((i) => i.severity === 'critical').length;
+    const warnings = results.flatMap((r) => r.issues).filter((i) => i.severity === 'warning').length;
     const avgScore = Math.round(results.reduce((sum, r) => sum + r.score, 0) / results.length);
-    const pagesNeedingWork = results.filter(r => r.score < 80).length;
+    const pagesNeedingWork = results.filter((r) => r.score < 80).length;
 
     const output = {
         meta: {
@@ -332,9 +372,9 @@ async function main() {
             avgSeoScore: avgScore,
             criticalIssues: critical,
             warningIssues: warnings,
-            pagesNeedingWork,
+            pagesNeedingWork
         },
-        pages: results.sort((a, b) => a.score - b.score), // worst first
+        pages: results.sort((a, b) => a.score - b.score) // worst first
     };
 
     fs.writeFileSync(OUTPUT_FILE, JSON.stringify(output, null, 2));
@@ -348,7 +388,7 @@ async function main() {
     console.log(`\n✅ Report saved to ${OUTPUT_FILE}\n`);
 }
 
-main().catch(err => {
+main().catch((err) => {
     console.error('Audit failed:', err);
     process.exit(1);
 });
