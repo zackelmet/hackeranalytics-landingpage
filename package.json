@@ -5,7 +5,11 @@
         "dev": "next dev",
         "prebuild": "node scripts/generate-sitemap.js",
         "build": "next build",
-        "start": "next start"
+        "start": "next start",
+        "seo:audit": "node scripts/seo-audit.js",
+        "seo:audit:prod": "node scripts/seo-audit.js --url https://hackeranalytics.com",
+        "seo:tasks": "node scripts/seo-tasks.js",
+        "seo": "npm run seo:audit && npm run seo:tasks"
     },
     "dependencies": {
         "@algolia/autocomplete-js": "^1.17.1",
