@@ -224,9 +224,18 @@ function MobileMenu(props) {
                 <span className="sr-only">Open Menu</span>
                 <MenuIcon className="w-6 h-6 fill-current" />
             </button>
-            <div 
-                className={classNames('sb-mobile-menu', 'fixed', 'inset-0', 'z-[60]', isMenuOpen ? 'block' : 'hidden')} 
-                style={{ background: '#0a0a23', padding: '1rem' }}
+            <div
+                className={classNames(
+                    'sb-mobile-menu',
+                    'fixed',
+                    'inset-0',
+                    'z-[60]',
+                    isMenuOpen ? 'block' : 'hidden',
+                    'min-h-screen',
+                    'overflow-auto',
+                    'p-4',
+                    'bg-[#0a0a23]'
+                )}
             >
                 <div className="flex flex-col text-white">
                     <div className="flex items-center justify-between mb-10">
