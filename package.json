@@ -19,6 +19,7 @@
         "classnames": "^2.5.1",
         "dayjs": "^1.11.11",
         "dotenv": "^17.2.3",
+        "firebase-admin": "^13.8.0",
         "front-matter": "^4.0.2",
         "glob": "^10.4.2",
         "lottie-react": "^2.4.1",
